@@ -1,6 +1,7 @@
 _svd: "../esp32s31.base.svd"
 
 _include:
+  - "_clic.yml"
   - "_gpio.yml"
   - "_ecc.yml"
 
