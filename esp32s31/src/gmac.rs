@@ -1359,12 +1359,12 @@ pub type REGISTER0_BUSMODEREGISTER =
     crate::Reg<register0_busmoderegister::REGISTER0_BUSMODEREGISTER_SPEC>;
 #[doc = "Controls the Host Interface Mode"]
 pub mod register0_busmoderegister;
-#[doc = "REGISTER1_TRANSMITPOLLDEMANDREGISTER (r) register accessor: Used by the host to instruct the DMA to poll the Transmit Descriptor list\n\nYou can [`read`](crate::Reg::read) this register and get [`register1_transmitpolldemandregister::R`]. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@register1_transmitpolldemandregister`] module"]
+#[doc = "REGISTER1_TRANSMITPOLLDEMANDREGISTER (w) register accessor: Used by the host to instruct the DMA to poll the Transmit Descriptor list\n\nYou can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`register1_transmitpolldemandregister::W`]. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@register1_transmitpolldemandregister`] module"]
 pub type REGISTER1_TRANSMITPOLLDEMANDREGISTER =
     crate::Reg<register1_transmitpolldemandregister::REGISTER1_TRANSMITPOLLDEMANDREGISTER_SPEC>;
 #[doc = "Used by the host to instruct the DMA to poll the Transmit Descriptor list"]
 pub mod register1_transmitpolldemandregister;
-#[doc = "REGISTER2_RECEIVEPOLLDEMANDREGISTER (r) register accessor: Used by the host to instruct the DMA to poll the Receive Descriptor list\n\nYou can [`read`](crate::Reg::read) this register and get [`register2_receivepolldemandregister::R`]. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@register2_receivepolldemandregister`] module"]
+#[doc = "REGISTER2_RECEIVEPOLLDEMANDREGISTER (w) register accessor: Used by the host to instruct the DMA to poll the Receive Descriptor list\n\nYou can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`register2_receivepolldemandregister::W`]. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@register2_receivepolldemandregister`] module"]
 pub type REGISTER2_RECEIVEPOLLDEMANDREGISTER =
     crate::Reg<register2_receivepolldemandregister::REGISTER2_RECEIVEPOLLDEMANDREGISTER_SPEC>;
 #[doc = "Used by the host to instruct the DMA to poll the Receive Descriptor list"]

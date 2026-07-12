@@ -60,6 +60,16 @@ GPIO:
 GPIO_EXT:
   _include: ../../../common_patches/gpiosd_ext.yaml
 
+GMAC:
+  REGISTER1_TRANSMITPOLLDEMANDREGISTER:
+    _modify:
+      TPD:
+        access: write-only
+  REGISTER2_RECEIVEPOLLDEMANDREGISTER:
+    _modify:
+      RPD:
+        access: write-only
+
 HP_SYS:
   _add:
     _interrupts:
