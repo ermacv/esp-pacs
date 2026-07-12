@@ -54,6 +54,44 @@ GPIO:
 GPIO_EXT:
   _include: ../../../common_patches/gpiosd_ext.yaml
 
+HP_SYS:
+  _add:
+    _interrupts:
+      FROM_CPU_INTR0:
+        value: 65
+      FROM_CPU_INTR1:
+        value: 66
+      FROM_CPU_INTR2:
+        value: 67
+      FROM_CPU_INTR3:
+        value: 68
+  _modify:
+    HP_CPU_INT_FROM_CPU_0:
+      name: CPU_INTR_FROM_CPU_0
+    HP_CPU_INT_FROM_CPU_1:
+      name: CPU_INTR_FROM_CPU_1
+    HP_CPU_INT_FROM_CPU_2:
+      name: CPU_INTR_FROM_CPU_2
+    HP_CPU_INT_FROM_CPU_3:
+      name: CPU_INTR_FROM_CPU_3
+  CPU_INTR_FROM_CPU_0:
+    _modify:
+      HP_CPU_INT_FROM_CPU_0:
+        name: CPU_INTR_FROM_CPU_0
+  CPU_INTR_FROM_CPU_1:
+    _modify:
+      HP_CPU_INT_FROM_CPU_1:
+        name: CPU_INTR_FROM_CPU_1
+  CPU_INTR_FROM_CPU_2:
+    _modify:
+      HP_CPU_INT_FROM_CPU_2:
+        name: CPU_INTR_FROM_CPU_2
+  CPU_INTR_FROM_CPU_3:
+    _modify:
+      HP_CPU_INT_FROM_CPU_3:
+        name: CPU_INTR_FROM_CPU_3
+  _include: ../../../common_patches/sw_interrupts.yaml
+
 JPEG:
   _include: ../../../common_patches/int_strip.yaml
   _array:

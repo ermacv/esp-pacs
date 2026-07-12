@@ -76,6 +76,10 @@ extern "C" {
     fn GPIO_INT1();
     fn GPIO_INT2();
     fn GPIO_INT3();
+    fn FROM_CPU_INTR0();
+    fn FROM_CPU_INTR1();
+    fn FROM_CPU_INTR2();
+    fn FROM_CPU_INTR3();
     fn CACHE();
     fn CPU_APM_M0();
     fn CPU_APM_M1();
@@ -285,10 +289,18 @@ pub static __EXTERNAL_INTERRUPTS: [Vector; 168] = [
     Vector {
         _handler: GPIO_INT3,
     },
-    Vector { _reserved: 0 },
-    Vector { _reserved: 0 },
-    Vector { _reserved: 0 },
-    Vector { _reserved: 0 },
+    Vector {
+        _handler: FROM_CPU_INTR0,
+    },
+    Vector {
+        _handler: FROM_CPU_INTR1,
+    },
+    Vector {
+        _handler: FROM_CPU_INTR2,
+    },
+    Vector {
+        _handler: FROM_CPU_INTR3,
+    },
     Vector { _handler: CACHE },
     Vector {
         _handler: CPU_APM_M0,

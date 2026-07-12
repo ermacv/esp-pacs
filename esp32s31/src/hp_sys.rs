@@ -5,56 +5,53 @@ pub struct RegisterBlock {
     ver_date: VER_DATE,
     hp_clk_en: HP_CLK_EN,
     _reserved2: [u8; 0x08],
-    hp_cpu_int_from_cpu_0: HP_CPU_INT_FROM_CPU_0,
-    hp_cpu_int_from_cpu_1: HP_CPU_INT_FROM_CPU_1,
-    hp_cpu_int_from_cpu_2: HP_CPU_INT_FROM_CPU_2,
-    hp_cpu_int_from_cpu_3: HP_CPU_INT_FROM_CPU_3,
-    _reserved6: [u8; 0x08],
+    cpu_intr_from_cpu: [CPU_INTR_FROM_CPU; 4],
+    _reserved3: [u8; 0x08],
     hp_modem_diag_en: HP_MODEM_DIAG_EN,
-    _reserved7: [u8; 0x10],
+    _reserved4: [u8; 0x10],
     hp_tcm_ram_pwr_ctrl0: HP_TCM_RAM_PWR_CTRL0,
     hp_rom_pwr_ctrl0: HP_ROM_PWR_CTRL0,
-    _reserved9: [u8; 0x0c],
+    _reserved6: [u8; 0x0c],
     hp_probea_ctrl: HP_PROBEA_CTRL,
     hp_probeb_ctrl: HP_PROBEB_CTRL,
-    _reserved11: [u8; 0x04],
+    _reserved8: [u8; 0x04],
     hp_probe_out: HP_PROBE_OUT,
-    _reserved12: [u8; 0x04],
+    _reserved9: [u8; 0x04],
     hp_cpu_corestalled_st: HP_CPU_CORESTALLED_ST,
-    _reserved13: [u8; 0x08],
+    _reserved10: [u8; 0x08],
     hp_crypto_ctrl: HP_CRYPTO_CTRL,
-    _reserved14: [u8; 0x08],
+    _reserved11: [u8; 0x08],
     hp_iomux_fpga_debug: HP_IOMUX_FPGA_DEBUG,
     rdn_eco_cs: RDN_ECO_CS,
-    _reserved16: [u8; 0x60],
+    _reserved13: [u8; 0x60],
     hp_tcm_rdn_eco_cs: HP_TCM_RDN_ECO_CS,
     hp_tcm_rdn_eco_low: HP_TCM_RDN_ECO_LOW,
     hp_tcm_rdn_eco_high: HP_TCM_RDN_ECO_HIGH,
-    _reserved19: [u8; 0x20],
+    _reserved16: [u8; 0x20],
     hp_cache_pwr_ctrl: HP_CACHE_PWR_CTRL,
     hp_tcm_data_dump_ctrl: HP_TCM_DATA_DUMP_CTRL,
     hp_cpu_waiti_conf: HP_CPU_WAITI_CONF,
     core_debug_runstall_conf: CORE_DEBUG_RUNSTALL_CONF,
-    _reserved23: [u8; 0x04],
+    _reserved20: [u8; 0x04],
     hp_core_ibus_timeout_conf: HP_CORE_IBUS_TIMEOUT_CONF,
     hp_core_dbus_timeout_conf: HP_CORE_DBUS_TIMEOUT_CONF,
-    _reserved25: [u8; 0x0c],
+    _reserved22: [u8; 0x0c],
     hp_icm_h2x_cfg: HP_ICM_H2X_CFG,
-    _reserved26: [u8; 0x04],
+    _reserved23: [u8; 0x04],
     hp_bitscrambler_peri_sel: HP_BITSCRAMBLER_PERI_SEL,
-    _reserved27: [u8; 0x04],
+    _reserved24: [u8; 0x04],
     gdma_ctrl: GDMA_CTRL,
-    _reserved28: [u8; 0x0c],
+    _reserved25: [u8; 0x0c],
     vpu_ctrl: VPU_CTRL,
-    _reserved29: [u8; 0x14],
+    _reserved26: [u8; 0x14],
     hp_design_for_verification0: HP_DESIGN_FOR_VERIFICATION0,
     hp_design_for_verification1: HP_DESIGN_FOR_VERIFICATION1,
-    _reserved31: [u8; 0x10],
+    _reserved28: [u8; 0x10],
     hp_ahb2axi_bresp_err_int_raw: HP_AHB2AXI_BRESP_ERR_INT_RAW,
     hp_ahb2axi_bresp_err_int_st: HP_AHB2AXI_BRESP_ERR_INT_ST,
     hp_ahb2axi_bresp_err_int_ena: HP_AHB2AXI_BRESP_ERR_INT_ENA,
     hp_ahb2axi_bresp_err_int_clr: HP_AHB2AXI_BRESP_ERR_INT_CLR,
-    _reserved35: [u8; 0x08],
+    _reserved32: [u8; 0x08],
     hp_core_dmactive_lpcore: HP_CORE_DMACTIVE_LPCORE,
     hp_core_err_resp_dis: HP_CORE_ERR_RESP_DIS,
     hp_core_timeout_int_raw: HP_CORE_TIMEOUT_INT_RAW,
@@ -62,20 +59,20 @@ pub struct RegisterBlock {
     hp_core_timeout_int_ena: HP_CORE_TIMEOUT_INT_ENA,
     hp_core_timeout_int_clr: HP_CORE_TIMEOUT_INT_CLR,
     hp_core_pad_wakeup_event: HP_CORE_PAD_WAKEUP_EVENT,
-    _reserved42: [u8; 0x04],
+    _reserved39: [u8; 0x04],
     hp_twai0_timestamp_l: HP_TWAI0_TIMESTAMP_L,
     hp_twai0_timestamp_h: HP_TWAI0_TIMESTAMP_H,
     hp_twai1_timestamp_l: HP_TWAI1_TIMESTAMP_L,
     hp_twai1_timestamp_h: HP_TWAI1_TIMESTAMP_H,
-    _reserved46: [u8; 0x08],
+    _reserved43: [u8; 0x08],
     hp_rng_cfg: HP_RNG_CFG,
-    _reserved47: [u8; 0x04],
+    _reserved44: [u8; 0x04],
     hp_peri_mem_clk_force_on: HP_PERI_MEM_CLK_FORCE_ON,
-    _reserved48: [u8; 0x04],
+    _reserved45: [u8; 0x04],
     prdyn_st: PRDYN_ST,
     icm_cfg: ICM_CFG,
     uart3_mem_lp_ctrl: UART3_MEM_LP_CTRL,
-    _reserved51: [u8; 0x10],
+    _reserved48: [u8; 0x10],
     rmt_mem_lp_ctrl: RMT_MEM_LP_CTRL,
     ledc0_mem_lp_ctrl: LEDC0_MEM_LP_CTRL,
     km_mem_lp_ctrl: KM_MEM_LP_CTRL,
@@ -84,14 +81,14 @@ pub struct RegisterBlock {
     ecc_mem_lp_ctrl: ECC_MEM_LP_CTRL,
     rsa_mem_lp_ctrl: RSA_MEM_LP_CTRL,
     bitscram_mem_lp_ctrl: BITSCRAM_MEM_LP_CTRL,
-    _reserved59: [u8; 0x04],
+    _reserved56: [u8; 0x04],
     can0_mem_lp_ctrl: CAN0_MEM_LP_CTRL,
-    _reserved60: [u8; 0x08],
+    _reserved57: [u8; 0x08],
     mspi_mem_lp_ctrl: MSPI_MEM_LP_CTRL,
-    _reserved61: [u8; 0x14],
+    _reserved58: [u8; 0x14],
     hpcore_mem_lp_ctrl: HPCORE_MEM_LP_CTRL,
     rom_mem_lp_ctrl: ROM_MEM_LP_CTRL,
-    _reserved63: [u8; 0x08],
+    _reserved60: [u8; 0x08],
     l1_cache_mem_lp_ctrl: L1_CACHE_MEM_LP_CTRL,
     kyber_mem_lp_ctrl: KYBER_MEM_LP_CTRL,
     lcdcam_mem_lp_ctrl: LCDCAM_MEM_LP_CTRL,
@@ -115,7 +112,7 @@ pub struct RegisterBlock {
     cpu_peri1_timeout_addr: CPU_PERI1_TIMEOUT_ADDR,
     cpu_peri1_timeout_uid: CPU_PERI1_TIMEOUT_UID,
     cpu_acs_cache_mem_conf: CPU_ACS_CACHE_MEM_CONF,
-    _reserved86: [u8; 0x28],
+    _reserved83: [u8; 0x28],
     tcm_performace_ctrl: TCM_PERFORMACE_CTRL,
     sdio_pad_bist_cfg: SDIO_PAD_BIST_CFG,
     sdio_pad_bist_int_raw: SDIO_PAD_BIST_INT_RAW,
@@ -151,25 +148,16 @@ impl RegisterBlock {
     pub const fn hp_clk_en(&self) -> &HP_CLK_EN {
         &self.hp_clk_en
     }
-    #[doc = "0x10 - NA"]
+    #[doc = "0x10..0x20 - NA"]
     #[inline(always)]
-    pub const fn hp_cpu_int_from_cpu_0(&self) -> &HP_CPU_INT_FROM_CPU_0 {
-        &self.hp_cpu_int_from_cpu_0
+    pub const fn cpu_intr_from_cpu(&self, n: usize) -> &CPU_INTR_FROM_CPU {
+        &self.cpu_intr_from_cpu[n]
     }
-    #[doc = "0x14 - NA"]
+    #[doc = "Iterator for array of:"]
+    #[doc = "0x10..0x20 - NA"]
     #[inline(always)]
-    pub const fn hp_cpu_int_from_cpu_1(&self) -> &HP_CPU_INT_FROM_CPU_1 {
-        &self.hp_cpu_int_from_cpu_1
-    }
-    #[doc = "0x18 - NA"]
-    #[inline(always)]
-    pub const fn hp_cpu_int_from_cpu_2(&self) -> &HP_CPU_INT_FROM_CPU_2 {
-        &self.hp_cpu_int_from_cpu_2
-    }
-    #[doc = "0x1c - NA"]
-    #[inline(always)]
-    pub const fn hp_cpu_int_from_cpu_3(&self) -> &HP_CPU_INT_FROM_CPU_3 {
-        &self.hp_cpu_int_from_cpu_3
+    pub fn cpu_intr_from_cpu_iter(&self) -> impl Iterator<Item = &CPU_INTR_FROM_CPU> {
+        self.cpu_intr_from_cpu.iter()
     }
     #[doc = "0x28 - NA"]
     #[inline(always)]
@@ -695,22 +683,10 @@ pub mod ver_date;
 pub type HP_CLK_EN = crate::Reg<hp_clk_en::HP_CLK_EN_SPEC>;
 #[doc = "NA"]
 pub mod hp_clk_en;
-#[doc = "HP_CPU_INT_FROM_CPU_0 (rw) register accessor: NA\n\nYou can [`read`](crate::Reg::read) this register and get [`hp_cpu_int_from_cpu_0::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`hp_cpu_int_from_cpu_0::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@hp_cpu_int_from_cpu_0`] module"]
-pub type HP_CPU_INT_FROM_CPU_0 = crate::Reg<hp_cpu_int_from_cpu_0::HP_CPU_INT_FROM_CPU_0_SPEC>;
+#[doc = "CPU_INTR_FROM_CPU (rw) register accessor: NA\n\nYou can [`read`](crate::Reg::read) this register and get [`cpu_intr_from_cpu::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`cpu_intr_from_cpu::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@cpu_intr_from_cpu`] module"]
+pub type CPU_INTR_FROM_CPU = crate::Reg<cpu_intr_from_cpu::CPU_INTR_FROM_CPU_SPEC>;
 #[doc = "NA"]
-pub mod hp_cpu_int_from_cpu_0;
-#[doc = "HP_CPU_INT_FROM_CPU_1 (rw) register accessor: NA\n\nYou can [`read`](crate::Reg::read) this register and get [`hp_cpu_int_from_cpu_1::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`hp_cpu_int_from_cpu_1::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@hp_cpu_int_from_cpu_1`] module"]
-pub type HP_CPU_INT_FROM_CPU_1 = crate::Reg<hp_cpu_int_from_cpu_1::HP_CPU_INT_FROM_CPU_1_SPEC>;
-#[doc = "NA"]
-pub mod hp_cpu_int_from_cpu_1;
-#[doc = "HP_CPU_INT_FROM_CPU_2 (rw) register accessor: NA\n\nYou can [`read`](crate::Reg::read) this register and get [`hp_cpu_int_from_cpu_2::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`hp_cpu_int_from_cpu_2::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@hp_cpu_int_from_cpu_2`] module"]
-pub type HP_CPU_INT_FROM_CPU_2 = crate::Reg<hp_cpu_int_from_cpu_2::HP_CPU_INT_FROM_CPU_2_SPEC>;
-#[doc = "NA"]
-pub mod hp_cpu_int_from_cpu_2;
-#[doc = "HP_CPU_INT_FROM_CPU_3 (rw) register accessor: NA\n\nYou can [`read`](crate::Reg::read) this register and get [`hp_cpu_int_from_cpu_3::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`hp_cpu_int_from_cpu_3::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@hp_cpu_int_from_cpu_3`] module"]
-pub type HP_CPU_INT_FROM_CPU_3 = crate::Reg<hp_cpu_int_from_cpu_3::HP_CPU_INT_FROM_CPU_3_SPEC>;
-#[doc = "NA"]
-pub mod hp_cpu_int_from_cpu_3;
+pub mod cpu_intr_from_cpu;
 #[doc = "HP_MODEM_DIAG_EN (rw) register accessor: NA\n\nYou can [`read`](crate::Reg::read) this register and get [`hp_modem_diag_en::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`hp_modem_diag_en::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@hp_modem_diag_en`] module"]
 pub type HP_MODEM_DIAG_EN = crate::Reg<hp_modem_diag_en::HP_MODEM_DIAG_EN_SPEC>;
 #[doc = "NA"]
