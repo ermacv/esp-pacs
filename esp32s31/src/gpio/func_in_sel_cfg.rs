@@ -42,6 +42,21 @@ impl core::fmt::Debug for R {
     }
 }
 impl W {
+    /// Compatibility alias used by esp-hal GPIO drivers.
+    #[inline(always)]
+    pub fn in_sel(&mut self) -> FUNC_IN_SEL_W<'_, FUNC_IN_SEL_CFG_SPEC> {
+        self.func_in_sel()
+    }
+    /// Compatibility alias used by esp-hal GPIO drivers.
+    #[inline(always)]
+    pub fn in_inv_sel(&mut self) -> FUNC_IN_INV_SEL_W<'_, FUNC_IN_SEL_CFG_SPEC> {
+        self.func_in_inv_sel()
+    }
+    /// Compatibility alias used by esp-hal GPIO drivers.
+    #[inline(always)]
+    pub fn sel(&mut self) -> SIG_IN_SEL_W<'_, FUNC_IN_SEL_CFG_SPEC> {
+        self.sig_in_sel()
+    }
     #[doc = "Bits 0:7 - Configures to select a pin from the 63 GPIO pins to connect the input signal %s."]
     #[inline(always)]
     pub fn func_in_sel(&mut self) -> FUNC_IN_SEL_W<'_, FUNC_IN_SEL_CFG_SPEC> {
