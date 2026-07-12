@@ -5,6 +5,12 @@ _include:
   - "_gpio.yml"
   - "_ecc.yml"
 
+_add:
+  PSRAM_MSPI:
+    description: "System MSPI controller for external PSRAM"
+    derivedFrom: SPI0
+    baseAddress: 0x20502000
+
 PMU:
   _include: ../../../common_patches/pmu_int_strip.yaml
 

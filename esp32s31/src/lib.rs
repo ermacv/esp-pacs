@@ -1196,6 +1196,15 @@ impl core::fmt::Debug for SPI1 {
 }
 #[doc = "SPI (Serial Peripheral Interface) Controller 1"]
 pub mod spi1;
+#[doc = "System MSPI controller for external PSRAM"]
+pub type PSRAM_MSPI = crate::Periph<spi0::RegisterBlock, 0x2050_2000>;
+impl core::fmt::Debug for PSRAM_MSPI {
+    fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+        f.debug_struct("PSRAM_MSPI").finish()
+    }
+}
+#[doc = "System MSPI controller for external PSRAM"]
+pub use self::spi0 as psram_mspi;
 #[doc = "SPI (Serial Peripheral Interface) Controller 2"]
 pub type SPI2 = crate::Periph<spi2::RegisterBlock, 0x2038_f000>;
 impl core::fmt::Debug for SPI2 {
