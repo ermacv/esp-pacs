@@ -539,6 +539,15 @@ impl core::fmt::Debug for ASRC {
 }
 #[doc = "ASRC Peripheral"]
 pub mod asrc;
+#[doc = "Connectivity subsystem clock, reset, and interface control"]
+pub type CNNT_SYS = crate::Periph<cnnt_sys::RegisterBlock, 0x2035_9000>;
+impl core::fmt::Debug for CNNT_SYS {
+    fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+        f.debug_struct("CNNT_SYS").finish()
+    }
+}
+#[doc = "Connectivity subsystem clock, reset, and interface control"]
+pub mod cnnt_sys;
 #[doc = "AXI_DMA Peripheral"]
 pub type AXI_DMA = crate::Periph<axi_dma::RegisterBlock, 0x2034_8000>;
 impl core::fmt::Debug for AXI_DMA {

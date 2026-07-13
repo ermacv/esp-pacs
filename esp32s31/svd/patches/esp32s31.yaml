@@ -10,6 +10,132 @@ _add:
     description: "System MSPI controller for external PSRAM"
     derivedFrom: SPI0
     baseAddress: 0x20502000
+  CNNT_SYS:
+    description: "Connectivity subsystem clock, reset, and interface control"
+    baseAddress: 0x20359000
+    addressBlock:
+      - offset: 0x0
+        size: 0x64
+        usage: "Registers"
+    registers:
+      HP_EMAC_CTRL:
+        description: "EMAC reset control"
+        addressOffset: 0x3c
+        size: 0x20
+        access: read-write
+        fields:
+          EMAC_USELESS_CLK_EN:
+            bitOffset: 0
+            bitWidth: 1
+          EMAC_RST_EN:
+            bitOffset: 1
+            bitWidth: 1
+          EMAC_FORCE_NORST:
+            bitOffset: 2
+            bitWidth: 1
+      HP_EMAC_REF_CTRL:
+        description: "EMAC reference clock control"
+        addressOffset: 0x40
+        size: 0x20
+        access: read-write
+        fields:
+          EMAC_REF_CLK_SEL:
+            description: "Reference clock source: 0 = MPLL 500 MHz, 1 = CPLL 300 MHz"
+            bitOffset: 0
+            bitWidth: 2
+          EMAC_REF_CLK_EN:
+            bitOffset: 2
+            bitWidth: 1
+          EMAC_REF_50M_PAD_OUT_CLK_EN:
+            bitOffset: 3
+            bitWidth: 1
+          EMAC_REF_CLK_DIV_NUM:
+            bitOffset: 8
+            bitWidth: 8
+      HP_EMAC_RMII_PAD_CTRL:
+        description: "EMAC RMII pad clock control"
+        addressOffset: 0x44
+        size: 0x20
+        access: read-write
+        fields:
+          EMAC_RMII_PAD_CLK_EN:
+            bitOffset: 1
+            bitWidth: 1
+          EMAC_RMII_PAD_CLK_INV_EN:
+            bitOffset: 2
+            bitWidth: 1
+      HP_EMAC_RMII_CTRL:
+        description: "EMAC RMII clock control"
+        addressOffset: 0x48
+        size: 0x20
+        access: read-write
+        fields:
+          EMAC_RMII_CLK_SEL:
+            bitOffset: 0
+            bitWidth: 1
+          EMAC_RMII_CLK_EN:
+            bitOffset: 1
+            bitWidth: 1
+          EMAC_RMII_PAD_OUT_CLK_EN:
+            bitOffset: 2
+            bitWidth: 1
+          EMAC_RXTX_CLK_DIV_NUM:
+            bitOffset: 8
+            bitWidth: 5
+      HP_EMAC_RX_CTRL:
+        description: "EMAC receive clock control"
+        addressOffset: 0x4c
+        size: 0x20
+        access: read-write
+        fields:
+          EMAC_RX_PAD_CLK_EN:
+            bitOffset: 0
+            bitWidth: 1
+          EMAC_RX_PAD_CLK_INV_EN:
+            bitOffset: 1
+            bitWidth: 1
+          EMAC_RX_CLK_SEL:
+            bitOffset: 2
+            bitWidth: 1
+          EMAC_RX_180_CLK_EN:
+            bitOffset: 3
+            bitWidth: 1
+      HP_EMAC_TX_CTRL:
+        description: "EMAC transmit clock control"
+        addressOffset: 0x50
+        size: 0x20
+        access: read-write
+        fields:
+          EMAC_TX_PAD_CLK_EN:
+            bitOffset: 0
+            bitWidth: 1
+          EMAC_TX_PAD_CLK_INV_EN:
+            bitOffset: 1
+            bitWidth: 1
+          EMAC_TX_CLK_SEL:
+            bitOffset: 2
+            bitWidth: 1
+          EMAC_TX_180_CLK_EN:
+            bitOffset: 3
+            bitWidth: 1
+      GMAC_CTRL0:
+        description: "GMAC interface and low-power control"
+        addressOffset: 0x60
+        size: 0x20
+        access: read-write
+        fields:
+          SBD_FLOWCTRL:
+            bitOffset: 1
+            bitWidth: 1
+          PHY_INTF_SEL:
+            bitOffset: 2
+            bitWidth: 3
+          GMAC_MEM_CLK_FORCE_ON:
+            bitOffset: 5
+            bitWidth: 1
+          GMAC_CSYSREQ:
+            bitOffset: 10
+            bitWidth: 1
 
 PMU:
   _include: ../../../common_patches/pmu_int_strip.yaml
