@@ -223,6 +223,14 @@ pub enum Interrupt {
     HP_PARLIO_RX = 117,
     #[doc = "118 - HP_PARLIO_TX"]
     HP_PARLIO_TX = 118,
+    #[doc = "120 - Wi-Fi MAC interrupt"]
+    WIFI_MAC = 120,
+    #[doc = "121 - Wi-Fi MAC non-maskable interrupt source"]
+    WIFI_MAC_NMI = 121,
+    #[doc = "122 - Wi-Fi power interrupt"]
+    WIFI_PWR = 122,
+    #[doc = "123 - Wi-Fi baseband interrupt"]
+    WIFI_BB = 123,
     #[doc = "134 - CORDIC"]
     CORDIC = 134,
     #[doc = "135 - ZERO_DET"]
@@ -395,6 +403,10 @@ impl Interrupt {
             116 => Ok(Interrupt::HP_PAU),
             117 => Ok(Interrupt::HP_PARLIO_RX),
             118 => Ok(Interrupt::HP_PARLIO_TX),
+            120 => Ok(Interrupt::WIFI_MAC),
+            121 => Ok(Interrupt::WIFI_MAC_NMI),
+            122 => Ok(Interrupt::WIFI_PWR),
+            123 => Ok(Interrupt::WIFI_BB),
             134 => Ok(Interrupt::CORDIC),
             135 => Ok(Interrupt::ZERO_DET),
             136 => Ok(Interrupt::LP_WDT),

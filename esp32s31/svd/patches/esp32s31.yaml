@@ -13,6 +13,19 @@ _add:
   CNNT_SYS:
     description: "Connectivity subsystem clock, reset, and interface control"
     baseAddress: 0x20359000
+    interrupts:
+      WIFI_MAC:
+        description: Wi-Fi MAC interrupt
+        value: 120
+      WIFI_MAC_NMI:
+        description: Wi-Fi MAC non-maskable interrupt source
+        value: 121
+      WIFI_PWR:
+        description: Wi-Fi power interrupt
+        value: 122
+      WIFI_BB:
+        description: Wi-Fi baseband interrupt
+        value: 123
     addressBlock:
       - offset: 0x0
         size: 0x64
