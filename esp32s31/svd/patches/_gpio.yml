@@ -12,15 +12,26 @@ GPIO:
       reset-value: 0x80
       size: 0x20
       fields:
-        FUNC_IN_SEL:
+        IN_SEL:
           description: "Configures to select a pin from the 63 GPIO pins to connect the input signal %s."
           bitOffset: 0
           bitWidth: 8
-        FUNC_IN_INV_SEL:
+        IN_INV_SEL:
           description: "Configures whether or not to invert the input value. 0: Not invert. 1: Invert."
           bitOffset: 8
           bitWidth: 1
-        SIG_IN_SEL:
+        SEL:
           description: "Configures whether or not to route signals via GPIO matrix. 0: Bypass GPIO matrix. 1: Route via GPIO matrix."
           bitOffset: 9
           bitWidth: 1
+
+  FUNC%s_OUT_SEL_CFG:
+    _modify:
+      FUNC_OUT_SEL:
+        name: OUT_SEL
+      FUNC_OUT_INV_SEL:
+        name: INV_SEL
+      FUNC_OE_SEL:
+        name: OEN_SEL
+      FUNC_OE_INV_SEL:
+        name: OEN_INV_SEL
