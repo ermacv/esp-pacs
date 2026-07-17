@@ -1,0 +1,12 @@
+SHA:
+  _modify:
+    "_2_SM_3_H_MEM*":
+      name: "H_MEM%s"
+      dim: 16
+      dimIncrement: 0x4
+      size: 0x20
+    "_2_SM_3_M_MEM*":
+      name: "M_MEM%s"
+      dim: 32
+      dimIncrement: 0x4
+      size: 0x20

@@ -4,6 +4,7 @@ _include:
   - "_clic.yml"
   - "_gpio.yml"
   - "_ecc.yml"
+  - "_sha.yml"
 
 _add:
   PSRAM_MSPI:
