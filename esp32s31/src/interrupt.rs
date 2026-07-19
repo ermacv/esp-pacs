@@ -179,6 +179,8 @@ pub enum Interrupt {
     HP_PERI0_PMS = 91,
     #[doc = "92 - HP_PERI1_PMS"]
     HP_PERI1_PMS = 92,
+    #[doc = "95 - MSPI Flash command completion interrupt"]
+    MSPI_FLASH = 95,
     #[doc = "96 - LPI"]
     LPI = 96,
     #[doc = "97 - PMT"]
@@ -381,6 +383,7 @@ impl Interrupt {
             90 => Ok(Interrupt::HP_APM_M6),
             91 => Ok(Interrupt::HP_PERI0_PMS),
             92 => Ok(Interrupt::HP_PERI1_PMS),
+            95 => Ok(Interrupt::MSPI_FLASH),
             96 => Ok(Interrupt::LPI),
             97 => Ok(Interrupt::PMT),
             98 => Ok(Interrupt::SBD),

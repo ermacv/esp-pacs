@@ -100,6 +100,7 @@ extern "C" {
     fn HP_APM_M6();
     fn HP_PERI0_PMS();
     fn HP_PERI1_PMS();
+    fn MSPI_FLASH();
     fn LPI();
     fn PMT();
     fn SBD();
@@ -369,7 +370,9 @@ pub static __EXTERNAL_INTERRUPTS: [Vector; 168] = [
     },
     Vector { _reserved: 0 },
     Vector { _reserved: 0 },
-    Vector { _reserved: 0 },
+    Vector {
+        _handler: MSPI_FLASH,
+    },
     Vector { _handler: LPI },
     Vector { _handler: PMT },
     Vector { _handler: SBD },

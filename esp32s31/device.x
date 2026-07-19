@@ -86,6 +86,7 @@ PROVIDE(HP_APM_M5 = DefaultHandler);
 PROVIDE(HP_APM_M6 = DefaultHandler);
 PROVIDE(HP_PERI0_PMS = DefaultHandler);
 PROVIDE(HP_PERI1_PMS = DefaultHandler);
+PROVIDE(MSPI_FLASH = DefaultHandler);
 PROVIDE(LPI = DefaultHandler);
 PROVIDE(PMT = DefaultHandler);
 PROVIDE(SBD = DefaultHandler);

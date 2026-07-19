@@ -262,6 +262,13 @@ JPEG:
   _array:
     C?: {}
 
+SPI1:
+  _add:
+    _interrupts:
+      MSPI_FLASH:
+        description: MSPI Flash command completion interrupt
+        value: 95
+
 "SPI[01]":
   _strip: SPI_MEM_
   "*":
