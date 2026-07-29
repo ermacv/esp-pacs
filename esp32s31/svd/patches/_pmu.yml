@@ -1,4 +1,20 @@
 PMU:
+  _modify:
+    HP_ACTIVE_HP_CK_POWER:
+      description: >-
+        SOURCE[S31_ESP_PACS_BASE_SVD,S31_PMU_HEADERS,ROM_REV0_PHY_OPEN_FE_BB_CLK];
+        CONFIDENCE[mixed-per-field]. HP-active clock/power controls. The complete
+        ESP32-S31 rev0 ROM phy_open_fe_bb_clk body sets bits 3:0 and bit 22;
+        the individual meanings of bits 3:0 remain unknown.
+    IMM_HP_CK_POWER_0:
+      description: >-
+        SOURCE[S31_ESP_PACS_BASE_SVD,S31_PMU_HEADERS,BLOB_LIBPHY_PHY_OPEN_I2C_XPD_NEW];
+        CONFIDENCE[exact-s31-layout-and-instruction-use]. Immediate HP
+        clock/power tie controls. The vendor header marks these fields WT, but
+        the complete ESP32-S31 libphy.a[phy_reg.o] phy_open_i2c_xpd_new body
+        loads this register before masking and storing it. Model it read-write
+        so the PAC preserves the evidenced read/modify/write operation.
+
   HP_ACTIVE_HP_CK_POWER:
     _modify:
       HP_ACTIVE_XPD_PLL_I2C:
@@ -6,6 +22,15 @@ PMU:
       HP_ACTIVE_XPD_PLL:
         bitWidth: 1
     _add:
+      ROM_OPEN_FE_BB_UNKNOWN_LOW:
+        description: >-
+          SOURCE[ROM_REV0_PHY_OPEN_FE_BB_CLK];
+          CONFIDENCE[instruction-exact-semantics-unknown]. The complete ESP32-S31
+          rev0 ROM phy_open_fe_bb_clk body sets bits 3:0; their individual
+          meanings remain unknown.
+        bitOffset: 0
+        bitWidth: 4
+        access: read-write
       HP_ACTIVE_XPD_BBPLL_I2C:
         bitOffset: 24
         bitWidth: 1
@@ -93,6 +118,33 @@ PMU:
       HP_SLEEP_XPD_MPLL:
         bitOffset: 30
         bitWidth: 1
+        access: read-write
+
+  IMM_HP_CK_POWER_0:
+    _modify:
+      TIE_LOW_GLOBAL_XTALX2_ICG:
+        access: read-write
+      TIE_LOW_GLOBAL_XTAL_ICG:
+        access: read-write
+      TIE_LOW_I2C_RETENTION:
+        access: read-write
+      TIE_LOW_XPD_BB_I2C:
+        access: read-write
+      TIE_LOW_XPD_XTALX2:
+        access: read-write
+      TIE_LOW_XPD_XTAL:
+        access: read-write
+      TIE_HIGH_GLOBAL_XTALX2_ICG:
+        access: read-write
+      TIE_HIGH_GLOBAL_XTAL_ICG:
+        access: read-write
+      TIE_HIGH_I2C_RETENTION:
+        access: read-write
+      TIE_HIGH_XPD_BB_I2C:
+        access: read-write
+      TIE_HIGH_XPD_XTALX2:
+        access: read-write
+      TIE_HIGH_XPD_XTAL:
         access: read-write
 
   IMM_HP_CK_POWER_1:

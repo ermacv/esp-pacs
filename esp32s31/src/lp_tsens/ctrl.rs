@@ -2,7 +2,7 @@
 pub type R = crate::R<CTRL_SPEC>;
 #[doc = "Register `CTRL` writer"]
 pub type W = crate::W<CTRL_SPEC>;
-#[doc = "Field `OUT` reader - Temperature sensor data out."]
+#[doc = "Field `OUT` reader - SOURCE\\[S31_ESP_PACS_BASE_SVD,ROM_REV0_PHY_TSENS\\]; CONFIDENCE\\[exact-field-and-instruction-use\\]. Unsigned temperature code consumed by complete phy_tsens_code_read and phy_tsens_temp_read_local."]
 pub type OUT_R = crate::FieldReader;
 #[doc = "Field `READY` reader - Indicate temperature sensor out ready."]
 pub type READY_R = crate::BitReader;
@@ -26,16 +26,16 @@ pub type IN_INV_W<'a, REG> = crate::BitWriter<'a, REG>;
 pub type CLK_DIV_R = crate::FieldReader;
 #[doc = "Field `CLK_DIV` writer - Temperature sensor clock divider."]
 pub type CLK_DIV_W<'a, REG> = crate::FieldWriter<'a, REG, 8>;
-#[doc = "Field `POWER_UP` reader - Temperature sensor power up."]
+#[doc = "Field `POWER_UP` reader - SOURCE\\[S31_ESP_PACS_BASE_SVD,ROM_REV0_PHY_TSENS\\]; CONFIDENCE\\[exact-field-and-instruction-use\\]. Complete phy_set_tsens_power_ sets or clears this bit from its boolean argument."]
 pub type POWER_UP_R = crate::BitReader;
-#[doc = "Field `POWER_UP` writer - Temperature sensor power up."]
+#[doc = "Field `POWER_UP` writer - SOURCE\\[S31_ESP_PACS_BASE_SVD,ROM_REV0_PHY_TSENS\\]; CONFIDENCE\\[exact-field-and-instruction-use\\]. Complete phy_set_tsens_power_ sets or clears this bit from its boolean argument."]
 pub type POWER_UP_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `POWER_UP_FORCE` reader - 1: dump out & power up controlled by SW, 0: by FSM."]
 pub type POWER_UP_FORCE_R = crate::BitReader;
 #[doc = "Field `POWER_UP_FORCE` writer - 1: dump out & power up controlled by SW, 0: by FSM."]
 pub type POWER_UP_FORCE_W<'a, REG> = crate::BitWriter<'a, REG>;
 impl R {
-    #[doc = "Bits 0:7 - Temperature sensor data out."]
+    #[doc = "Bits 0:7 - SOURCE\\[S31_ESP_PACS_BASE_SVD,ROM_REV0_PHY_TSENS\\]; CONFIDENCE\\[exact-field-and-instruction-use\\]. Unsigned temperature code consumed by complete phy_tsens_code_read and phy_tsens_temp_read_local."]
     #[inline(always)]
     pub fn out(&self) -> OUT_R {
         OUT_R::new((self.bits & 0xff) as u8)
@@ -70,7 +70,7 @@ impl R {
     pub fn clk_div(&self) -> CLK_DIV_R {
         CLK_DIV_R::new(((self.bits >> 14) & 0xff) as u8)
     }
-    #[doc = "Bit 22 - Temperature sensor power up."]
+    #[doc = "Bit 22 - SOURCE\\[S31_ESP_PACS_BASE_SVD,ROM_REV0_PHY_TSENS\\]; CONFIDENCE\\[exact-field-and-instruction-use\\]. Complete phy_set_tsens_power_ sets or clears this bit from its boolean argument."]
     #[inline(always)]
     pub fn power_up(&self) -> POWER_UP_R {
         POWER_UP_R::new(((self.bits >> 22) & 1) != 0)
@@ -123,7 +123,7 @@ impl W {
     pub fn clk_div(&mut self) -> CLK_DIV_W<'_, CTRL_SPEC> {
         CLK_DIV_W::new(self, 14)
     }
-    #[doc = "Bit 22 - Temperature sensor power up."]
+    #[doc = "Bit 22 - SOURCE\\[S31_ESP_PACS_BASE_SVD,ROM_REV0_PHY_TSENS\\]; CONFIDENCE\\[exact-field-and-instruction-use\\]. Complete phy_set_tsens_power_ sets or clears this bit from its boolean argument."]
     #[inline(always)]
     pub fn power_up(&mut self) -> POWER_UP_W<'_, CTRL_SPEC> {
         POWER_UP_W::new(self, 22)
@@ -134,7 +134,7 @@ impl W {
         POWER_UP_FORCE_W::new(self, 23)
     }
 }
-#[doc = "Tsens configuration.\n\nYou can [`read`](crate::Reg::read) this register and get [`ctrl::R`](R). You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`ctrl::W`](W). You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
+#[doc = "SOURCE\\[S31_ESP_PACS_BASE_SVD,ROM_REV0_PHY_TSENS\\]; CONFIDENCE\\[exact-register-and-instruction-use\\]. LP temperature-sensor data and power control. Complete ESP32-S31 rev0 ROM phy_set_tsens_power_ updates POWER_UP; phy_tsens_code_read and phy_tsens_temp_read_local consume OUT.\n\nYou can [`read`](crate::Reg::read) this register and get [`ctrl::R`](R). You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`ctrl::W`](W). You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
 pub struct CTRL_SPEC;
 impl crate::RegisterSpec for CTRL_SPEC {
     type Ux = u32;

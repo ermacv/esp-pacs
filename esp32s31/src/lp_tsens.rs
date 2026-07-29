@@ -18,7 +18,7 @@ pub struct RegisterBlock {
     rnd_eco_cs: RND_ECO_CS,
 }
 impl RegisterBlock {
-    #[doc = "0x00 - Tsens configuration."]
+    #[doc = "0x00 - SOURCE\\[S31_ESP_PACS_BASE_SVD,ROM_REV0_PHY_TSENS\\]; CONFIDENCE\\[exact-register-and-instruction-use\\]. LP temperature-sensor data and power control. Complete ESP32-S31 rev0 ROM phy_set_tsens_power_ updates POWER_UP; phy_tsens_code_read and phy_tsens_temp_read_local consume OUT."]
     #[inline(always)]
     pub const fn ctrl(&self) -> &CTRL {
         &self.ctrl
@@ -48,7 +48,7 @@ impl RegisterBlock {
     pub const fn int_clr(&self) -> &INT_CLR {
         &self.int_clr
     }
-    #[doc = "0x18 - Tsens regbank configuration registers."]
+    #[doc = "0x18 - SOURCE\\[S31_ESP_PACS_BASE_SVD,BLOB_LIBPHY_PHY_TSENS_READ_INIT\\]; CONFIDENCE\\[exact-register-and-instruction-use\\]. LP temperature-sensor regbank and read-path control. Complete pinned libphy.a\\[phy_tsens.o\\]::phy_tsens_read_init performs three independent fresh RMW operations setting bits 0, 23 and 9, in that order."]
     #[inline(always)]
     pub const fn clk_conf(&self) -> &CLK_CONF {
         &self.clk_conf
@@ -89,9 +89,9 @@ impl RegisterBlock {
         &self.rnd_eco_cs
     }
 }
-#[doc = "CTRL (rw) register accessor: Tsens configuration.\n\nYou can [`read`](crate::Reg::read) this register and get [`ctrl::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`ctrl::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@ctrl`] module"]
+#[doc = "CTRL (rw) register accessor: SOURCE\\[S31_ESP_PACS_BASE_SVD,ROM_REV0_PHY_TSENS\\]; CONFIDENCE\\[exact-register-and-instruction-use\\]. LP temperature-sensor data and power control. Complete ESP32-S31 rev0 ROM phy_set_tsens_power_ updates POWER_UP; phy_tsens_code_read and phy_tsens_temp_read_local consume OUT.\n\nYou can [`read`](crate::Reg::read) this register and get [`ctrl::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`ctrl::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@ctrl`] module"]
 pub type CTRL = crate::Reg<ctrl::CTRL_SPEC>;
-#[doc = "Tsens configuration."]
+#[doc = "SOURCE\\[S31_ESP_PACS_BASE_SVD,ROM_REV0_PHY_TSENS\\]; CONFIDENCE\\[exact-register-and-instruction-use\\]. LP temperature-sensor data and power control. Complete ESP32-S31 rev0 ROM phy_set_tsens_power_ updates POWER_UP; phy_tsens_code_read and phy_tsens_temp_read_local consume OUT."]
 pub mod ctrl;
 #[doc = "CTRL2 (rw) register accessor: Tsens configuration.\n\nYou can [`read`](crate::Reg::read) this register and get [`ctrl2::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`ctrl2::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@ctrl2`] module"]
 pub type CTRL2 = crate::Reg<ctrl2::CTRL2_SPEC>;
@@ -113,9 +113,9 @@ pub mod int_ena;
 pub type INT_CLR = crate::Reg<int_clr::INT_CLR_SPEC>;
 #[doc = "Tsens interrupt clear registers."]
 pub mod int_clr;
-#[doc = "CLK_CONF (rw) register accessor: Tsens regbank configuration registers.\n\nYou can [`read`](crate::Reg::read) this register and get [`clk_conf::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`clk_conf::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@clk_conf`] module"]
+#[doc = "CLK_CONF (rw) register accessor: SOURCE\\[S31_ESP_PACS_BASE_SVD,BLOB_LIBPHY_PHY_TSENS_READ_INIT\\]; CONFIDENCE\\[exact-register-and-instruction-use\\]. LP temperature-sensor regbank and read-path control. Complete pinned libphy.a\\[phy_tsens.o\\]::phy_tsens_read_init performs three independent fresh RMW operations setting bits 0, 23 and 9, in that order.\n\nYou can [`read`](crate::Reg::read) this register and get [`clk_conf::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`clk_conf::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@clk_conf`] module"]
 pub type CLK_CONF = crate::Reg<clk_conf::CLK_CONF_SPEC>;
-#[doc = "Tsens regbank configuration registers."]
+#[doc = "SOURCE\\[S31_ESP_PACS_BASE_SVD,BLOB_LIBPHY_PHY_TSENS_READ_INIT\\]; CONFIDENCE\\[exact-register-and-instruction-use\\]. LP temperature-sensor regbank and read-path control. Complete pinned libphy.a\\[phy_tsens.o\\]::phy_tsens_read_init performs three independent fresh RMW operations setting bits 0, 23 and 9, in that order."]
 pub mod clk_conf;
 #[doc = "INT_ENA_W1TS (w) register accessor: Tsens wakeup interrupt enable assert.\n\nYou can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`int_ena_w1ts::W`]. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@int_ena_w1ts`] module"]
 pub type INT_ENA_W1TS = crate::Reg<int_ena_w1ts::INT_ENA_W1TS_SPEC>;

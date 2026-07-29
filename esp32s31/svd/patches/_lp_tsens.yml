@@ -1,0 +1,56 @@
+_modify:
+  CTRL:
+    description: >-
+      SOURCE[S31_ESP_PACS_BASE_SVD,ROM_REV0_PHY_TSENS];
+      CONFIDENCE[exact-register-and-instruction-use]. LP temperature-sensor
+      data and power control. Complete ESP32-S31 rev0 ROM
+      phy_set_tsens_power_ updates POWER_UP; phy_tsens_code_read and
+      phy_tsens_temp_read_local consume OUT.
+  CLK_CONF:
+    description: >-
+      SOURCE[S31_ESP_PACS_BASE_SVD,BLOB_LIBPHY_PHY_TSENS_READ_INIT];
+      CONFIDENCE[exact-register-and-instruction-use]. LP temperature-sensor
+      regbank and read-path control. Complete pinned
+      libphy.a[phy_tsens.o]::phy_tsens_read_init performs three independent
+      fresh RMW operations setting bits 0, 23 and 9, in that order.
+
+CTRL:
+  _modify:
+    OUT:
+      description: >-
+        SOURCE[S31_ESP_PACS_BASE_SVD,ROM_REV0_PHY_TSENS];
+        CONFIDENCE[exact-field-and-instruction-use]. Unsigned temperature code
+        consumed by complete phy_tsens_code_read and
+        phy_tsens_temp_read_local.
+    POWER_UP:
+      description: >-
+        SOURCE[S31_ESP_PACS_BASE_SVD,ROM_REV0_PHY_TSENS];
+        CONFIDENCE[exact-field-and-instruction-use]. Complete
+        phy_set_tsens_power_ sets or clears this bit from its boolean argument.
+
+CLK_CONF:
+  _modify:
+    CLK_EN:
+      description: >-
+        SOURCE[S31_ESP_PACS_BASE_SVD,BLOB_LIBPHY_PHY_TSENS_READ_INIT];
+        CONFIDENCE[exact-field-and-instruction-use]. Complete
+        phy_tsens_read_init sets this bit in its first fresh RMW operation.
+  _add:
+    PHY_READOUT_ENABLE_UNKNOWN:
+      description: >-
+        SOURCE[BLOB_LIBPHY_PHY_TSENS_READ_INIT];
+        CONFIDENCE[instruction-exact-semantics-unknown]. Complete
+        phy_tsens_read_init sets bit 23 in its third fresh RMW operation; the
+        electrical meaning is not assigned by the blob.
+      bitOffset: 23
+      bitWidth: 1
+      access: read-write
+    PHY_CONVERSION_ENABLE_UNKNOWN:
+      description: >-
+        SOURCE[BLOB_LIBPHY_PHY_TSENS_READ_INIT];
+        CONFIDENCE[instruction-exact-semantics-unknown]. Complete
+        phy_tsens_read_init sets bit 9 in its fourth fresh RMW operation; the
+        electrical meaning is not assigned by the blob.
+      bitOffset: 9
+      bitWidth: 1
+      access: read-write

@@ -163,7 +163,7 @@ impl RegisterBlock {
     pub const fn apll_sdm(&self) -> &APLL_SDM {
         &self.apll_sdm
     }
-    #[doc = "0x68 - need_des"]
+    #[doc = "0x68 - SOURCE\\[S31_ESP_PACS_BASE_SVD,ROM_REV0_PHY_POWER_DETECTOR\\]; CONFIDENCE\\[exact-register-and-instruction-use\\]. LP always-on SAR2 power detector circuit control. Complete ESP32-S31 rev0 ROM phy_pwdet_reg_init and phy_pwdet_sar2_init select encoding 4; complete phy_txcal_debuge_mode_ selects encoding 2."]
     #[inline(always)]
     pub const fn rtc_sar2_pwdet_cct(&self) -> &RTC_SAR2_PWDET_CCT {
         &self.rtc_sar2_pwdet_cct
@@ -278,9 +278,9 @@ pub mod cpll_cfg;
 pub type APLL_SDM = crate::Reg<apll_sdm::APLL_SDM_SPEC>;
 #[doc = "need_des"]
 pub mod apll_sdm;
-#[doc = "RTC_SAR2_PWDET_CCT (rw) register accessor: need_des\n\nYou can [`read`](crate::Reg::read) this register and get [`rtc_sar2_pwdet_cct::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`rtc_sar2_pwdet_cct::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@rtc_sar2_pwdet_cct`] module"]
+#[doc = "RTC_SAR2_PWDET_CCT (rw) register accessor: SOURCE\\[S31_ESP_PACS_BASE_SVD,ROM_REV0_PHY_POWER_DETECTOR\\]; CONFIDENCE\\[exact-register-and-instruction-use\\]. LP always-on SAR2 power detector circuit control. Complete ESP32-S31 rev0 ROM phy_pwdet_reg_init and phy_pwdet_sar2_init select encoding 4; complete phy_txcal_debuge_mode_ selects encoding 2.\n\nYou can [`read`](crate::Reg::read) this register and get [`rtc_sar2_pwdet_cct::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`rtc_sar2_pwdet_cct::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@rtc_sar2_pwdet_cct`] module"]
 pub type RTC_SAR2_PWDET_CCT = crate::Reg<rtc_sar2_pwdet_cct::RTC_SAR2_PWDET_CCT_SPEC>;
-#[doc = "need_des"]
+#[doc = "SOURCE\\[S31_ESP_PACS_BASE_SVD,ROM_REV0_PHY_POWER_DETECTOR\\]; CONFIDENCE\\[exact-register-and-instruction-use\\]. LP always-on SAR2 power detector circuit control. Complete ESP32-S31 rev0 ROM phy_pwdet_reg_init and phy_pwdet_sar2_init select encoding 4; complete phy_txcal_debuge_mode_ selects encoding 2."]
 pub mod rtc_sar2_pwdet_cct;
 #[doc = "DATE (rw) register accessor: need_des\n\nYou can [`read`](crate::Reg::read) this register and get [`date::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`date::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@date`] module"]
 pub type DATE = crate::Reg<date::DATE_SPEC>;

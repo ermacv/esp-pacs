@@ -1,0 +1,17 @@
+_modify:
+  TSENS_CTRL:
+    description: >-
+      SOURCE[S31_ESP_PACS_BASE_SVD,BLOB_LIBPHY_PHY_TSENS_READ_INIT];
+      CONFIDENCE[exact-register-and-instruction-use]. LP temperature-sensor
+      clock/reset control. Complete pinned
+      libphy.a[phy_tsens.o]::phy_tsens_read_init sets LP_TSENS_CLK_EN between
+      the first and second LP_TSENS.CLK_CONF updates.
+
+TSENS_CTRL:
+  _modify:
+    LP_TSENS_CLK_EN:
+      description: >-
+        SOURCE[S31_ESP_PACS_BASE_SVD,BLOB_LIBPHY_PHY_TSENS_READ_INIT];
+        CONFIDENCE[exact-field-and-instruction-use]. Complete pinned
+        libphy.a[phy_tsens.o]::phy_tsens_read_init sets this bit through one
+        fresh read/modify/write operation.

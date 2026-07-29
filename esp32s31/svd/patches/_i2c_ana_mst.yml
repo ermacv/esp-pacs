@@ -9,49 +9,77 @@ _add:
     registers:
 
       I2C0_CTRL:
-        description: I2C0_CTRL
+        description: >-
+          Analog-register I2C host-0 command and completion word.
+          SOURCE[ROM_REV0_PHY_I2C]; complete phy_i2c_master_reset,
+          phy_chip_i2c_readReg_org and phy_chip_i2c_writeReg bodies.
         addressOffset: 0x0
         size: 32
         access: read-write
         resetValue: 0x00000000
         fields:
           SLAVE_ADDR:
+            description: Analog block identifier.
             bitOffset: 0
             bitWidth: 8
           SLAVE_REG_ADDR:
+            description: Register address within the selected analog block.
             bitOffset: 8
             bitWidth: 8
           DATA:
+            description: Write data or completed read result.
             bitOffset: 16
             bitWidth: 8
           READ_WRITE:
+            description: Write transaction when set; read transaction when clear.
             bitOffset: 24
             bitWidth: 1
           BUSY:
+            description: Hardware transaction busy status.
             bitOffset: 25
+            bitWidth: 1
+          START_OR_RESET:
+            description: >-
+              Transaction-start command, or the one-bit host reset word when
+              written without the address/data fields.
+            bitOffset: 26
             bitWidth: 1
 
       I2C1_CTRL:
-        description: I2C1_CTRL
+        description: >-
+          Analog-register I2C host-1 command and completion word.
+          SOURCE[ROM_REV0_PHY_I2C]; complete phy_i2c_master_reset,
+          phy_chip_i2c_readReg_org and phy_chip_i2c_writeReg bodies.
         addressOffset: 0x4
         size: 32
         access: read-write
         resetValue: 0x00000000
         fields:
           SLAVE_ADDR:
+            description: Analog block identifier.
             bitOffset: 0
             bitWidth: 8
           SLAVE_REG_ADDR:
+            description: Register address within the selected analog block.
             bitOffset: 8
             bitWidth: 8
           DATA:
+            description: Write data or completed read result.
             bitOffset: 16
             bitWidth: 8
           READ_WRITE:
+            description: Write transaction when set; read transaction when clear.
             bitOffset: 24
             bitWidth: 1
           BUSY:
+            description: Hardware transaction busy status.
             bitOffset: 25
+            bitWidth: 1
+          START_OR_RESET:
+            description: >-
+              Transaction-start command, or the one-bit host reset word when
+              written without the address/data fields.
+            bitOffset: 26
             bitWidth: 1
 
       I2C0_CONF:
@@ -114,21 +142,43 @@ _add:
             bitWidth: 12
 
       ANA_CONF0:
-        description: ANA_CONF0
+        description: >-
+          Shared analog-I2C master control. SOURCE[ROM_REV0_PHY_I2C];
+          complete phy_i2cmst_reg_init and phy_bbpll_cal bodies identify the
+          PHY register-mode and BBPLL calibration fields.
         addressOffset: 0x18
         size: 32
         access: read-write
         resetValue: 0x0000E408
         fields:
-          ANA_CONF0:
-            bitOffset: 0
-            bitWidth: 24
+          BBPLL_CAL_MODE_UNKNOWN:
+            description: >-
+              BBPLL calibration selection. Complete phy_bbpll_cal uses only
+              encoding 1 (disabled) and encoding 2 (enabled).
+            bitOffset: 2
+            bitWidth: 2
+          PHY_REGISTER_ENABLE:
+            description: >-
+              Enable PHY analog-register master mode; set by complete
+              phy_i2cmst_reg_init after selecting mode 2.
+            bitOffset: 6
+            bitWidth: 1
+          PHY_REGISTER_MODE:
+            description: >-
+              PHY analog-register master mode; complete phy_i2cmst_reg_init
+              selects encoding 2.
+            bitOffset: 9
+            bitWidth: 2
           ANA_STATUS0:
             bitOffset: 24
             bitWidth: 8
 
       ANA_CONF1:
-        description: ANA_CONF1
+        description: >-
+          Shared analog-I2C routing/read-mask word. SOURCE[BLOB_LIBPHY_PHY_I2C];
+          phy_i2c_get_reg_mask publishes the complement of the selected
+          16-bit block mask. ESP32-S31 regi2c routing also consumes the low
+          24-bit configuration image.
         addressOffset: 0x1C
         size: 32
         access: read-write
@@ -142,7 +192,10 @@ _add:
             bitWidth: 8
 
       ANA_CONF2:
-        description: ANA_CONF2
+        description: >-
+          Shared analog-I2C host-selection word. SOURCE[BLOB_LIBPHY_PHY_I2C];
+          the S31 host callback replaces bits 17:4 with 0x3fa0. The internal
+          subfield meanings remain unknown.
         addressOffset: 0x20
         size: 32
         access: read-write
@@ -156,7 +209,10 @@ _add:
             bitWidth: 8
 
       I2C0_CTRL1:
-        description: I2C0_CTRL1
+        description: >-
+          Host-0 timing/clock-selection control. SOURCE[ROM_REV0_PHY_I2C];
+          complete phy_i2c_clk_sel updates the five-bit high field and then
+          the six-bit low field using separate fresh reads.
         addressOffset: 0x24
         size: 32
         access: read-write
@@ -170,7 +226,10 @@ _add:
             bitWidth: 5
 
       I2C1_CTRL1:
-        description: I2C1_CTRL1
+        description: >-
+          Host-1 timing/clock-selection control. SOURCE[ROM_REV0_PHY_I2C];
+          complete phy_i2c_clk_sel updates the five-bit high field and then
+          the six-bit low field using separate fresh reads.
         addressOffset: 0x28
         size: 32
         access: read-write
@@ -184,7 +243,11 @@ _add:
             bitWidth: 5
 
       HW_I2C_CTRL:
-        description: HW_I2C_CTRL
+        description: >-
+          Hardware-host timing/clock-selection control.
+          SOURCE[ROM_REV0_PHY_I2C]; complete phy_i2c_clk_sel updates the
+          five-bit high field and then the six-bit low field using separate
+          fresh reads.
         addressOffset: 0x2C
         size: 32
         access: read-write

@@ -58,7 +58,7 @@ impl W {
         ARBITER_DIS_W::new(self, 11)
     }
 }
-#[doc = "HW_I2C_CTRL\n\nYou can [`read`](crate::Reg::read) this register and get [`hw_i2c_ctrl::R`](R). You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`hw_i2c_ctrl::W`](W). You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
+#[doc = "Hardware-host timing/clock-selection control. SOURCE\\[ROM_REV0_PHY_I2C\\]; complete phy_i2c_clk_sel updates the five-bit high field and then the six-bit low field using separate fresh reads.\n\nYou can [`read`](crate::Reg::read) this register and get [`hw_i2c_ctrl::R`](R). You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`hw_i2c_ctrl::W`](W). You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
 pub struct HW_I2C_CTRL_SPEC;
 impl crate::RegisterSpec for HW_I2C_CTRL_SPEC {
     type Ux = u32;

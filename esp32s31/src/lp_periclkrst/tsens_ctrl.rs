@@ -2,16 +2,16 @@
 pub type R = crate::R<TSENS_CTRL_SPEC>;
 #[doc = "Register `TSENS_CTRL` writer"]
 pub type W = crate::W<TSENS_CTRL_SPEC>;
-#[doc = "Field `LP_TSENS_CLK_EN` reader - need_des"]
+#[doc = "Field `LP_TSENS_CLK_EN` reader - SOURCE\\[S31_ESP_PACS_BASE_SVD,BLOB_LIBPHY_PHY_TSENS_READ_INIT\\]; CONFIDENCE\\[exact-field-and-instruction-use\\]. Complete pinned libphy.a\\[phy_tsens.o\\]::phy_tsens_read_init sets this bit through one fresh read/modify/write operation."]
 pub type LP_TSENS_CLK_EN_R = crate::BitReader;
-#[doc = "Field `LP_TSENS_CLK_EN` writer - need_des"]
+#[doc = "Field `LP_TSENS_CLK_EN` writer - SOURCE\\[S31_ESP_PACS_BASE_SVD,BLOB_LIBPHY_PHY_TSENS_READ_INIT\\]; CONFIDENCE\\[exact-field-and-instruction-use\\]. Complete pinned libphy.a\\[phy_tsens.o\\]::phy_tsens_read_init sets this bit through one fresh read/modify/write operation."]
 pub type LP_TSENS_CLK_EN_W<'a, REG> = crate::BitWriter<'a, REG>;
 #[doc = "Field `LP_TSENS_RST_EN` reader - need_des"]
 pub type LP_TSENS_RST_EN_R = crate::BitReader;
 #[doc = "Field `LP_TSENS_RST_EN` writer - need_des"]
 pub type LP_TSENS_RST_EN_W<'a, REG> = crate::BitWriter<'a, REG>;
 impl R {
-    #[doc = "Bit 30 - need_des"]
+    #[doc = "Bit 30 - SOURCE\\[S31_ESP_PACS_BASE_SVD,BLOB_LIBPHY_PHY_TSENS_READ_INIT\\]; CONFIDENCE\\[exact-field-and-instruction-use\\]. Complete pinned libphy.a\\[phy_tsens.o\\]::phy_tsens_read_init sets this bit through one fresh read/modify/write operation."]
     #[inline(always)]
     pub fn lp_tsens_clk_en(&self) -> LP_TSENS_CLK_EN_R {
         LP_TSENS_CLK_EN_R::new(((self.bits >> 30) & 1) != 0)
@@ -32,7 +32,7 @@ impl core::fmt::Debug for R {
     }
 }
 impl W {
-    #[doc = "Bit 30 - need_des"]
+    #[doc = "Bit 30 - SOURCE\\[S31_ESP_PACS_BASE_SVD,BLOB_LIBPHY_PHY_TSENS_READ_INIT\\]; CONFIDENCE\\[exact-field-and-instruction-use\\]. Complete pinned libphy.a\\[phy_tsens.o\\]::phy_tsens_read_init sets this bit through one fresh read/modify/write operation."]
     #[inline(always)]
     pub fn lp_tsens_clk_en(&mut self) -> LP_TSENS_CLK_EN_W<'_, TSENS_CTRL_SPEC> {
         LP_TSENS_CLK_EN_W::new(self, 30)
@@ -43,7 +43,7 @@ impl W {
         LP_TSENS_RST_EN_W::new(self, 31)
     }
 }
-#[doc = "need_des\n\nYou can [`read`](crate::Reg::read) this register and get [`tsens_ctrl::R`](R). You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`tsens_ctrl::W`](W). You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
+#[doc = "SOURCE\\[S31_ESP_PACS_BASE_SVD,BLOB_LIBPHY_PHY_TSENS_READ_INIT\\]; CONFIDENCE\\[exact-register-and-instruction-use\\]. LP temperature-sensor clock/reset control. Complete pinned libphy.a\\[phy_tsens.o\\]::phy_tsens_read_init sets LP_TSENS_CLK_EN between the first and second LP_TSENS.CLK_CONF updates.\n\nYou can [`read`](crate::Reg::read) this register and get [`tsens_ctrl::R`](R). You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`tsens_ctrl::W`](W). You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
 pub struct TSENS_CTRL_SPEC;
 impl crate::RegisterSpec for TSENS_CTRL_SPEC {
     type Ux = u32;

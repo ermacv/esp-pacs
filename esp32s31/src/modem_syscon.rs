@@ -47,7 +47,7 @@ impl RegisterBlock {
     pub const fn clk_conf1(&self) -> &CLK_CONF1 {
         &self.clk_conf1
     }
-    #[doc = "0x18 - WIFI_BB_CFG"]
+    #[doc = "0x18 - SOURCE\\[S31_MODEM_SYSCON_STRUCT,ROM_REV0_PHY_PBUS,ROM_REV0_PHY_AGC, ROM_REV0_PHY_FREQUENCY_CHANNEL,BLOB_LIBPHY_PHY_BB_INIT\\]; CONFIDENCE\\[mixed-per-field\\]. Wi-Fi baseband configuration; only fields exercised by complete ESP32-S31 ROM/blob bodies are named."]
     #[inline(always)]
     pub const fn wifi_bb_cfg(&self) -> &WIFI_BB_CFG {
         &self.wifi_bb_cfg
@@ -107,9 +107,9 @@ pub mod modem_rst_conf;
 pub type CLK_CONF1 = crate::Reg<clk_conf1::CLK_CONF1_SPEC>;
 #[doc = "CLK_CONF1"]
 pub mod clk_conf1;
-#[doc = "WIFI_BB_CFG (rw) register accessor: WIFI_BB_CFG\n\nYou can [`read`](crate::Reg::read) this register and get [`wifi_bb_cfg::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`wifi_bb_cfg::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@wifi_bb_cfg`] module"]
+#[doc = "WIFI_BB_CFG (rw) register accessor: SOURCE\\[S31_MODEM_SYSCON_STRUCT,ROM_REV0_PHY_PBUS,ROM_REV0_PHY_AGC, ROM_REV0_PHY_FREQUENCY_CHANNEL,BLOB_LIBPHY_PHY_BB_INIT\\]; CONFIDENCE\\[mixed-per-field\\]. Wi-Fi baseband configuration; only fields exercised by complete ESP32-S31 ROM/blob bodies are named.\n\nYou can [`read`](crate::Reg::read) this register and get [`wifi_bb_cfg::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`wifi_bb_cfg::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@wifi_bb_cfg`] module"]
 pub type WIFI_BB_CFG = crate::Reg<wifi_bb_cfg::WIFI_BB_CFG_SPEC>;
-#[doc = "WIFI_BB_CFG"]
+#[doc = "SOURCE\\[S31_MODEM_SYSCON_STRUCT,ROM_REV0_PHY_PBUS,ROM_REV0_PHY_AGC, ROM_REV0_PHY_FREQUENCY_CHANNEL,BLOB_LIBPHY_PHY_BB_INIT\\]; CONFIDENCE\\[mixed-per-field\\]. Wi-Fi baseband configuration; only fields exercised by complete ESP32-S31 ROM/blob bodies are named."]
 pub mod wifi_bb_cfg;
 #[doc = "FE_CFG (rw) register accessor: FE_CFG\n\nYou can [`read`](crate::Reg::read) this register and get [`fe_cfg::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`fe_cfg::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@fe_cfg`] module"]
 pub type FE_CFG = crate::Reg<fe_cfg::FE_CFG_SPEC>;

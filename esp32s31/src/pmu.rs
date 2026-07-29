@@ -179,7 +179,7 @@ impl RegisterBlock {
     pub const fn hp_active_hp_sys_cntl(&self) -> &HP_ACTIVE_HP_SYS_CNTL {
         &self.hp_active_hp_sys_cntl
     }
-    #[doc = "0x1c - need_des"]
+    #[doc = "0x1c - SOURCE\\[S31_ESP_PACS_BASE_SVD,S31_PMU_HEADERS,ROM_REV0_PHY_OPEN_FE_BB_CLK\\]; CONFIDENCE\\[mixed-per-field\\]. HP-active clock/power controls. The complete ESP32-S31 rev0 ROM phy_open_fe_bb_clk body sets bits 3:0 and bit 22; the individual meanings of bits 3:0 remain unknown."]
     #[inline(always)]
     pub const fn hp_active_hp_ck_power(&self) -> &HP_ACTIVE_HP_CK_POWER {
         &self.hp_active_hp_ck_power
@@ -444,7 +444,7 @@ impl RegisterBlock {
     pub const fn lp_sleep_bias(&self) -> &LP_SLEEP_BIAS {
         &self.lp_sleep_bias
     }
-    #[doc = "0xf0 - need_des"]
+    #[doc = "0xf0 - SOURCE\\[S31_ESP_PACS_BASE_SVD,S31_PMU_HEADERS,BLOB_LIBPHY_PHY_OPEN_I2C_XPD_NEW\\]; CONFIDENCE\\[exact-s31-layout-and-instruction-use\\]. Immediate HP clock/power tie controls. The vendor header marks these fields WT, but the complete ESP32-S31 libphy.a\\[phy_reg.o\\] phy_open_i2c_xpd_new body loads this register before masking and storing it. Model it read-write so the PAC preserves the evidenced read/modify/write operation."]
     #[inline(always)]
     pub const fn imm_hp_ck_power_0(&self) -> &IMM_HP_CK_POWER_0 {
         &self.imm_hp_ck_power_0
@@ -868,9 +868,9 @@ pub mod hp_active_icg_modem;
 pub type HP_ACTIVE_HP_SYS_CNTL = crate::Reg<hp_active_hp_sys_cntl::HP_ACTIVE_HP_SYS_CNTL_SPEC>;
 #[doc = "need_des"]
 pub mod hp_active_hp_sys_cntl;
-#[doc = "HP_ACTIVE_HP_CK_POWER (rw) register accessor: need_des\n\nYou can [`read`](crate::Reg::read) this register and get [`hp_active_hp_ck_power::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`hp_active_hp_ck_power::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@hp_active_hp_ck_power`] module"]
+#[doc = "HP_ACTIVE_HP_CK_POWER (rw) register accessor: SOURCE\\[S31_ESP_PACS_BASE_SVD,S31_PMU_HEADERS,ROM_REV0_PHY_OPEN_FE_BB_CLK\\]; CONFIDENCE\\[mixed-per-field\\]. HP-active clock/power controls. The complete ESP32-S31 rev0 ROM phy_open_fe_bb_clk body sets bits 3:0 and bit 22; the individual meanings of bits 3:0 remain unknown.\n\nYou can [`read`](crate::Reg::read) this register and get [`hp_active_hp_ck_power::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`hp_active_hp_ck_power::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@hp_active_hp_ck_power`] module"]
 pub type HP_ACTIVE_HP_CK_POWER = crate::Reg<hp_active_hp_ck_power::HP_ACTIVE_HP_CK_POWER_SPEC>;
-#[doc = "need_des"]
+#[doc = "SOURCE\\[S31_ESP_PACS_BASE_SVD,S31_PMU_HEADERS,ROM_REV0_PHY_OPEN_FE_BB_CLK\\]; CONFIDENCE\\[mixed-per-field\\]. HP-active clock/power controls. The complete ESP32-S31 rev0 ROM phy_open_fe_bb_clk body sets bits 3:0 and bit 22; the individual meanings of bits 3:0 remain unknown."]
 pub mod hp_active_hp_ck_power;
 #[doc = "HP_ACTIVE_BIAS (rw) register accessor: need_des\n\nYou can [`read`](crate::Reg::read) this register and get [`hp_active_bias::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`hp_active_bias::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@hp_active_bias`] module"]
 pub type HP_ACTIVE_BIAS = crate::Reg<hp_active_bias::HP_ACTIVE_BIAS_SPEC>;
@@ -1084,9 +1084,9 @@ pub mod lp_sleep_lp_ck_power;
 pub type LP_SLEEP_BIAS = crate::Reg<lp_sleep_bias::LP_SLEEP_BIAS_SPEC>;
 #[doc = "need_des"]
 pub mod lp_sleep_bias;
-#[doc = "IMM_HP_CK_POWER_0 (w) register accessor: need_des\n\nYou can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`imm_hp_ck_power_0::W`]. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@imm_hp_ck_power_0`] module"]
+#[doc = "IMM_HP_CK_POWER_0 (rw) register accessor: SOURCE\\[S31_ESP_PACS_BASE_SVD,S31_PMU_HEADERS,BLOB_LIBPHY_PHY_OPEN_I2C_XPD_NEW\\]; CONFIDENCE\\[exact-s31-layout-and-instruction-use\\]. Immediate HP clock/power tie controls. The vendor header marks these fields WT, but the complete ESP32-S31 libphy.a\\[phy_reg.o\\] phy_open_i2c_xpd_new body loads this register before masking and storing it. Model it read-write so the PAC preserves the evidenced read/modify/write operation.\n\nYou can [`read`](crate::Reg::read) this register and get [`imm_hp_ck_power_0::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`imm_hp_ck_power_0::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@imm_hp_ck_power_0`] module"]
 pub type IMM_HP_CK_POWER_0 = crate::Reg<imm_hp_ck_power_0::IMM_HP_CK_POWER_0_SPEC>;
-#[doc = "need_des"]
+#[doc = "SOURCE\\[S31_ESP_PACS_BASE_SVD,S31_PMU_HEADERS,BLOB_LIBPHY_PHY_OPEN_I2C_XPD_NEW\\]; CONFIDENCE\\[exact-s31-layout-and-instruction-use\\]. Immediate HP clock/power tie controls. The vendor header marks these fields WT, but the complete ESP32-S31 libphy.a\\[phy_reg.o\\] phy_open_i2c_xpd_new body loads this register before masking and storing it. Model it read-write so the PAC preserves the evidenced read/modify/write operation."]
 pub mod imm_hp_ck_power_0;
 #[doc = "IMM_HP_CK_POWER_1 (rw) register accessor: need_des\n\nYou can [`read`](crate::Reg::read) this register and get [`imm_hp_ck_power_1::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`imm_hp_ck_power_1::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@imm_hp_ck_power_1`] module"]
 pub type IMM_HP_CK_POWER_1 = crate::Reg<imm_hp_ck_power_1::IMM_HP_CK_POWER_1_SPEC>;

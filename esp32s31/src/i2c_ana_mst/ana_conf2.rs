@@ -43,7 +43,7 @@ impl W {
         ANA_STATUS2_W::new(self, 24)
     }
 }
-#[doc = "ANA_CONF2\n\nYou can [`read`](crate::Reg::read) this register and get [`ana_conf2::R`](R). You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`ana_conf2::W`](W). You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
+#[doc = "Shared analog-I2C host-selection word. SOURCE\\[BLOB_LIBPHY_PHY_I2C\\]; the S31 host callback replaces bits 17:4 with 0x3fa0. The internal subfield meanings remain unknown.\n\nYou can [`read`](crate::Reg::read) this register and get [`ana_conf2::R`](R). You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`ana_conf2::W`](W). You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
 pub struct ANA_CONF2_SPEC;
 impl crate::RegisterSpec for ANA_CONF2_SPEC {
     type Ux = u32;

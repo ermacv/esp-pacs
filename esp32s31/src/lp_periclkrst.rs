@@ -82,7 +82,7 @@ impl RegisterBlock {
     pub const fn touch_ctrl(&self) -> &TOUCH_CTRL {
         &self.touch_ctrl
     }
-    #[doc = "0x30 - need_des"]
+    #[doc = "0x30 - SOURCE\\[S31_ESP_PACS_BASE_SVD,BLOB_LIBPHY_PHY_TSENS_READ_INIT\\]; CONFIDENCE\\[exact-register-and-instruction-use\\]. LP temperature-sensor clock/reset control. Complete pinned libphy.a\\[phy_tsens.o\\]::phy_tsens_read_init sets LP_TSENS_CLK_EN between the first and second LP_TSENS.CLK_CONF updates."]
     #[inline(always)]
     pub const fn tsens_ctrl(&self) -> &TSENS_CTRL {
         &self.tsens_ctrl
@@ -177,9 +177,9 @@ pub mod intr_ctrl;
 pub type TOUCH_CTRL = crate::Reg<touch_ctrl::TOUCH_CTRL_SPEC>;
 #[doc = "need_des"]
 pub mod touch_ctrl;
-#[doc = "TSENS_CTRL (rw) register accessor: need_des\n\nYou can [`read`](crate::Reg::read) this register and get [`tsens_ctrl::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`tsens_ctrl::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@tsens_ctrl`] module"]
+#[doc = "TSENS_CTRL (rw) register accessor: SOURCE\\[S31_ESP_PACS_BASE_SVD,BLOB_LIBPHY_PHY_TSENS_READ_INIT\\]; CONFIDENCE\\[exact-register-and-instruction-use\\]. LP temperature-sensor clock/reset control. Complete pinned libphy.a\\[phy_tsens.o\\]::phy_tsens_read_init sets LP_TSENS_CLK_EN between the first and second LP_TSENS.CLK_CONF updates.\n\nYou can [`read`](crate::Reg::read) this register and get [`tsens_ctrl::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`tsens_ctrl::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@tsens_ctrl`] module"]
 pub type TSENS_CTRL = crate::Reg<tsens_ctrl::TSENS_CTRL_SPEC>;
-#[doc = "need_des"]
+#[doc = "SOURCE\\[S31_ESP_PACS_BASE_SVD,BLOB_LIBPHY_PHY_TSENS_READ_INIT\\]; CONFIDENCE\\[exact-register-and-instruction-use\\]. LP temperature-sensor clock/reset control. Complete pinned libphy.a\\[phy_tsens.o\\]::phy_tsens_read_init sets LP_TSENS_CLK_EN between the first and second LP_TSENS.CLK_CONF updates."]
 pub mod tsens_ctrl;
 #[doc = "IOMUX_CTRL (rw) register accessor: need_des\n\nYou can [`read`](crate::Reg::read) this register and get [`iomux_ctrl::R`]. You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`iomux_ctrl::W`]. You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api).\n\nFor information about available fields see [`mod@iomux_ctrl`] module"]
 pub type IOMUX_CTRL = crate::Reg<iomux_ctrl::IOMUX_CTRL_SPEC>;

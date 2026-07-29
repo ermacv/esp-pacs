@@ -43,7 +43,7 @@ impl W {
         I2C0_SDA_SIDE_GUARD_W::new(self, 6)
     }
 }
-#[doc = "I2C0_CTRL1\n\nYou can [`read`](crate::Reg::read) this register and get [`i2c0_ctrl1::R`](R). You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`i2c0_ctrl1::W`](W). You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
+#[doc = "Host-0 timing/clock-selection control. SOURCE\\[ROM_REV0_PHY_I2C\\]; complete phy_i2c_clk_sel updates the five-bit high field and then the six-bit low field using separate fresh reads.\n\nYou can [`read`](crate::Reg::read) this register and get [`i2c0_ctrl1::R`](R). You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`i2c0_ctrl1::W`](W). You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
 pub struct I2C0_CTRL1_SPEC;
 impl crate::RegisterSpec for I2C0_CTRL1_SPEC {
     type Ux = u32;

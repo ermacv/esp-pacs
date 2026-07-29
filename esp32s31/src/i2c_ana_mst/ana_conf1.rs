@@ -43,7 +43,7 @@ impl W {
         ANA_STATUS1_W::new(self, 24)
     }
 }
-#[doc = "ANA_CONF1\n\nYou can [`read`](crate::Reg::read) this register and get [`ana_conf1::R`](R). You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`ana_conf1::W`](W). You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
+#[doc = "Shared analog-I2C routing/read-mask word. SOURCE\\[BLOB_LIBPHY_PHY_I2C\\]; phy_i2c_get_reg_mask publishes the complement of the selected 16-bit block mask. ESP32-S31 regi2c routing also consumes the low 24-bit configuration image.\n\nYou can [`read`](crate::Reg::read) this register and get [`ana_conf1::R`](R). You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`ana_conf1::W`](W). You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
 pub struct ANA_CONF1_SPEC;
 impl crate::RegisterSpec for ANA_CONF1_SPEC {
     type Ux = u32;

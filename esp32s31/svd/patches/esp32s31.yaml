@@ -106,6 +106,13 @@ JPEG:
 SPI0:
   _include: "./_spi0_mspi.yml"
 
+SPI1:
+  _add:
+    _interrupts:
+      MSPI_FLASH:
+        description: MSPI Flash command completion interrupt
+        value: 95
+
 "SPI[01]":
   _strip: SPI_MEM_
   "*":
@@ -179,6 +186,13 @@ LP_AON_CLKRST:
   _strip: LP_AONCLKRST_
   "*":
     _strip: LP_AONCLKRST_
+  _include: "_lp_aon_clkrst.yml"
+
+LP_PERICLKRST:
+  _include: "_lp_periclkrst.yml"
+
+LP_TSENS:
+  _include: "_lp_tsens.yml"
 
 LP_APM:
   _cluster:

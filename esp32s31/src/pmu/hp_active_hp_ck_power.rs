@@ -2,6 +2,10 @@
 pub type R = crate::R<HP_ACTIVE_HP_CK_POWER_SPEC>;
 #[doc = "Register `HP_ACTIVE_HP_CK_POWER` writer"]
 pub type W = crate::W<HP_ACTIVE_HP_CK_POWER_SPEC>;
+#[doc = "Field `ROM_OPEN_FE_BB_UNKNOWN_LOW` reader - SOURCE\\[ROM_REV0_PHY_OPEN_FE_BB_CLK\\]; CONFIDENCE\\[instruction-exact-semantics-unknown\\]. The complete ESP32-S31 rev0 ROM phy_open_fe_bb_clk body sets bits 3:0; their individual meanings remain unknown."]
+pub type ROM_OPEN_FE_BB_UNKNOWN_LOW_R = crate::FieldReader;
+#[doc = "Field `ROM_OPEN_FE_BB_UNKNOWN_LOW` writer - SOURCE\\[ROM_REV0_PHY_OPEN_FE_BB_CLK\\]; CONFIDENCE\\[instruction-exact-semantics-unknown\\]. The complete ESP32-S31 rev0 ROM phy_open_fe_bb_clk body sets bits 3:0; their individual meanings remain unknown."]
+pub type ROM_OPEN_FE_BB_UNKNOWN_LOW_W<'a, REG> = crate::FieldWriter<'a, REG, 4>;
 #[doc = "Field `HP_ACTIVE_XPD_XTALX2` reader - need_des"]
 pub type HP_ACTIVE_XPD_XTALX2_R = crate::BitReader;
 #[doc = "Field `HP_ACTIVE_XPD_XTALX2` writer - need_des"]
@@ -51,6 +55,11 @@ pub type HP_ACTIVE_XPD_MPLL_R = crate::BitReader;
 #[doc = "Field `HP_ACTIVE_XPD_MPLL` writer - "]
 pub type HP_ACTIVE_XPD_MPLL_W<'a, REG> = crate::BitWriter<'a, REG>;
 impl R {
+    #[doc = "Bits 0:3 - SOURCE\\[ROM_REV0_PHY_OPEN_FE_BB_CLK\\]; CONFIDENCE\\[instruction-exact-semantics-unknown\\]. The complete ESP32-S31 rev0 ROM phy_open_fe_bb_clk body sets bits 3:0; their individual meanings remain unknown."]
+    #[inline(always)]
+    pub fn rom_open_fe_bb_unknown_low(&self) -> ROM_OPEN_FE_BB_UNKNOWN_LOW_R {
+        ROM_OPEN_FE_BB_UNKNOWN_LOW_R::new((self.bits & 0x0f) as u8)
+    }
     #[doc = "Bit 19 - need_des"]
     #[inline(always)]
     pub fn hp_active_xpd_xtalx2(&self) -> HP_ACTIVE_XPD_XTALX2_R {
@@ -122,6 +131,10 @@ impl core::fmt::Debug for R {
             .field("hp_active_xpd_bb_i2c", &self.hp_active_xpd_bb_i2c())
             .field("hp_active_xpd_pll_i2c", &self.hp_active_xpd_pll_i2c())
             .field("hp_active_xpd_pll", &self.hp_active_xpd_pll())
+            .field(
+                "rom_open_fe_bb_unknown_low",
+                &self.rom_open_fe_bb_unknown_low(),
+            )
             .field("hp_active_xpd_bbpll_i2c", &self.hp_active_xpd_bbpll_i2c())
             .field("hp_active_xpd_apll_i2c", &self.hp_active_xpd_apll_i2c())
             .field("hp_active_xpd_mpll_i2c", &self.hp_active_xpd_mpll_i2c())
@@ -132,6 +145,13 @@ impl core::fmt::Debug for R {
     }
 }
 impl W {
+    #[doc = "Bits 0:3 - SOURCE\\[ROM_REV0_PHY_OPEN_FE_BB_CLK\\]; CONFIDENCE\\[instruction-exact-semantics-unknown\\]. The complete ESP32-S31 rev0 ROM phy_open_fe_bb_clk body sets bits 3:0; their individual meanings remain unknown."]
+    #[inline(always)]
+    pub fn rom_open_fe_bb_unknown_low(
+        &mut self,
+    ) -> ROM_OPEN_FE_BB_UNKNOWN_LOW_W<'_, HP_ACTIVE_HP_CK_POWER_SPEC> {
+        ROM_OPEN_FE_BB_UNKNOWN_LOW_W::new(self, 0)
+    }
     #[doc = "Bit 19 - need_des"]
     #[inline(always)]
     pub fn hp_active_xpd_xtalx2(
@@ -209,7 +229,7 @@ impl W {
         HP_ACTIVE_XPD_MPLL_W::new(self, 30)
     }
 }
-#[doc = "need_des\n\nYou can [`read`](crate::Reg::read) this register and get [`hp_active_hp_ck_power::R`](R). You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`hp_active_hp_ck_power::W`](W). You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
+#[doc = "SOURCE\\[S31_ESP_PACS_BASE_SVD,S31_PMU_HEADERS,ROM_REV0_PHY_OPEN_FE_BB_CLK\\]; CONFIDENCE\\[mixed-per-field\\]. HP-active clock/power controls. The complete ESP32-S31 rev0 ROM phy_open_fe_bb_clk body sets bits 3:0 and bit 22; the individual meanings of bits 3:0 remain unknown.\n\nYou can [`read`](crate::Reg::read) this register and get [`hp_active_hp_ck_power::R`](R). You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`hp_active_hp_ck_power::W`](W). You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]
 pub struct HP_ACTIVE_HP_CK_POWER_SPEC;
 impl crate::RegisterSpec for HP_ACTIVE_HP_CK_POWER_SPEC {
     type Ux = u32;

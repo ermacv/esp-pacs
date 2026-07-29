@@ -7,7 +7,7 @@ pub type W = crate::W<CTR_SPEC>;
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub enum SDA_FORCE_OUT {
     #[doc = "0: Open-drain output."]
-    OpenDrain    = 0,
+    OpenDrain = 0,
     #[doc = "1: Direct output."]
     DirectOutput = 1,
 }
@@ -61,7 +61,7 @@ where
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub enum SCL_FORCE_OUT {
     #[doc = "0: Open-drain output."]
-    OpenDrain    = 0,
+    OpenDrain = 0,
     #[doc = "1: Direct output."]
     DirectOutput = 1,
 }
