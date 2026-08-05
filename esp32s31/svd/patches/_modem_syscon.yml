@@ -165,21 +165,27 @@ _add:
           CLK_ZB_ST_MAP:
             bitOffset: 8
             bitWidth: 4
+            writeConstraint: [0, 0xf]
           CLK_FE_ST_MAP:
             bitOffset: 12
             bitWidth: 4
+            writeConstraint: [0, 0xf]
           CLK_BT_ST_MAP:
             bitOffset: 16
             bitWidth: 4
+            writeConstraint: [0, 0xf]
           CLK_WIFI_ST_MAP:
             bitOffset: 20
             bitWidth: 4
+            writeConstraint: [0, 0xf]
           CLK_MODEM_PERI_ST_MAP:
             bitOffset: 24
             bitWidth: 4
+            writeConstraint: [0, 0xf]
           CLK_MODEM_APB_ST_MAP:
             bitOffset: 28
             bitWidth: 4
+            writeConstraint: [0, 0xf]
 
       MODEM_RST_CONF:
         description: MODEM_RST_CONF
@@ -365,6 +371,7 @@ _add:
               encoding one.
             bitOffset: 2
             bitWidth: 2
+            writeConstraint: [0, 3]
           BB_AGC_UPDATE_ENABLE_UNKNOWN:
             description: >-
               SOURCE[ROM_REV0_PHY_AGC,ROM_REV0_PHY_FREQUENCY_CHANNEL];
@@ -373,6 +380,7 @@ _add:
               independently sets only the low bit.
             bitOffset: 11
             bitWidth: 3
+            writeConstraint: [0, 7]
           MAC_BASEBAND_ENABLE_UNKNOWN:
             description: >-
               SOURCE[ROM_REV0_PHY_FREQUENCY_CHANNEL];

@@ -31,6 +31,7 @@ PMU:
         bitOffset: 0
         bitWidth: 4
         access: read-write
+        writeConstraint: [0, 0xf]
       HP_ACTIVE_XPD_BBPLL_I2C:
         bitOffset: 24
         bitWidth: 1
@@ -55,6 +56,16 @@ PMU:
         bitOffset: 30
         bitWidth: 1
         access: read-write
+
+  HP_ACTIVE_ICG_MODEM:
+    _modify:
+      HP_ACTIVE_DIG_ICG_MODEM_CODE:
+        writeConstraint: [0, 3]
+
+  RF_PWC:
+    _modify:
+      XPD_RF_CIRCUIT:
+        writeConstraint: [0, 0xffff]
 
   HP_MODEM_HP_CK_POWER:
     _modify:

@@ -22,14 +22,17 @@ _add:
             description: Analog block identifier.
             bitOffset: 0
             bitWidth: 8
+            writeConstraint: [0, 0xff]
           SLAVE_REG_ADDR:
             description: Register address within the selected analog block.
             bitOffset: 8
             bitWidth: 8
+            writeConstraint: [0, 0xff]
           DATA:
             description: Write data or completed read result.
             bitOffset: 16
             bitWidth: 8
+            writeConstraint: [0, 0xff]
           READ_WRITE:
             description: Write transaction when set; read transaction when clear.
             bitOffset: 24
@@ -59,14 +62,17 @@ _add:
             description: Analog block identifier.
             bitOffset: 0
             bitWidth: 8
+            writeConstraint: [0, 0xff]
           SLAVE_REG_ADDR:
             description: Register address within the selected analog block.
             bitOffset: 8
             bitWidth: 8
+            writeConstraint: [0, 0xff]
           DATA:
             description: Write data or completed read result.
             bitOffset: 16
             bitWidth: 8
+            writeConstraint: [0, 0xff]
           READ_WRITE:
             description: Write transaction when set; read transaction when clear.
             bitOffset: 24
@@ -157,6 +163,7 @@ _add:
               encoding 1 (disabled) and encoding 2 (enabled).
             bitOffset: 2
             bitWidth: 2
+            writeConstraint: [0, 3]
           PHY_REGISTER_ENABLE:
             description: >-
               Enable PHY analog-register master mode; set by complete
@@ -169,6 +176,7 @@ _add:
               selects encoding 2.
             bitOffset: 9
             bitWidth: 2
+            writeConstraint: [0, 3]
           ANA_STATUS0:
             bitOffset: 24
             bitWidth: 8
@@ -187,9 +195,11 @@ _add:
           ANA_CONF1:
             bitOffset: 0
             bitWidth: 24
+            writeConstraint: [0, 0xffffff]
           ANA_STATUS1:
             bitOffset: 24
             bitWidth: 8
+            writeConstraint: [0, 0xff]
 
       ANA_CONF2:
         description: >-
@@ -204,6 +214,7 @@ _add:
           ANA_CONF2:
             bitOffset: 0
             bitWidth: 24
+            writeConstraint: [0, 0xffffff]
           ANA_STATUS2:
             bitOffset: 24
             bitWidth: 8
@@ -221,9 +232,11 @@ _add:
           I2C0_SCL_PULSE_DUR:
             bitOffset: 0
             bitWidth: 6
+            writeConstraint: [0, 0x3f]
           I2C0_SDA_SIDE_GUARD:
             bitOffset: 6
             bitWidth: 5
+            writeConstraint: [0, 0x1f]
 
       I2C1_CTRL1:
         description: >-
@@ -238,9 +251,11 @@ _add:
           I2C1_SCL_PULSE_DUR:
             bitOffset: 0
             bitWidth: 6
+            writeConstraint: [0, 0x3f]
           I2C1_SDA_SIDE_GUARD:
             bitOffset: 6
             bitWidth: 5
+            writeConstraint: [0, 0x1f]
 
       HW_I2C_CTRL:
         description: >-
@@ -256,9 +271,11 @@ _add:
           HW_I2C_SCL_PULSE_DUR:
             bitOffset: 0
             bitWidth: 6
+            writeConstraint: [0, 0x3f]
           HW_I2C_SDA_SIDE_GUARD:
             bitOffset: 6
             bitWidth: 5
+            writeConstraint: [0, 0x1f]
           ARBITER_DIS:
             bitOffset: 11
             bitWidth: 1

@@ -5,7 +5,7 @@ pub type W = crate::W<RTC_SAR2_PWDET_CCT_SPEC>;
 #[doc = "Field `RTC_SAR2_PWDET_CCT` reader - SOURCE\\[S31_ESP_PACS_BASE_SVD,ROM_REV0_PHY_POWER_DETECTOR\\]; CONFIDENCE\\[exact-field-and-instruction-use\\]. Three-bit SAR2 power detector circuit encoding. Complete ESP32-S31 rev0 ROM uses values 4 for initialization/enabling and 2 for TX-calibration debug mode."]
 pub type RTC_SAR2_PWDET_CCT_R = crate::FieldReader;
 #[doc = "Field `RTC_SAR2_PWDET_CCT` writer - SOURCE\\[S31_ESP_PACS_BASE_SVD,ROM_REV0_PHY_POWER_DETECTOR\\]; CONFIDENCE\\[exact-field-and-instruction-use\\]. Three-bit SAR2 power detector circuit encoding. Complete ESP32-S31 rev0 ROM uses values 4 for initialization/enabling and 2 for TX-calibration debug mode."]
-pub type RTC_SAR2_PWDET_CCT_W<'a, REG> = crate::FieldWriter<'a, REG, 3>;
+pub type RTC_SAR2_PWDET_CCT_W<'a, REG> = crate::FieldWriter<'a, REG, 3, u8, crate::Safe>;
 impl R {
     #[doc = "Bits 0:2 - SOURCE\\[S31_ESP_PACS_BASE_SVD,ROM_REV0_PHY_POWER_DETECTOR\\]; CONFIDENCE\\[exact-field-and-instruction-use\\]. Three-bit SAR2 power detector circuit encoding. Complete ESP32-S31 rev0 ROM uses values 4 for initialization/enabling and 2 for TX-calibration debug mode."]
     #[inline(always)]

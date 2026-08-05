@@ -5,7 +5,7 @@ pub type W = crate::W<RF_PWC_SPEC>;
 #[doc = "Field `XPD_RF_CIRCUIT` reader - need_des"]
 pub type XPD_RF_CIRCUIT_R = crate::FieldReader<u16>;
 #[doc = "Field `XPD_RF_CIRCUIT` writer - need_des"]
-pub type XPD_RF_CIRCUIT_W<'a, REG> = crate::FieldWriter<'a, REG, 16, u16>;
+pub type XPD_RF_CIRCUIT_W<'a, REG> = crate::FieldWriter<'a, REG, 16, u16, crate::Safe>;
 impl R {
     #[doc = "Bits 16:31 - need_des"]
     #[inline(always)]

@@ -15,3 +15,4 @@ RTC_SAR2_PWDET_CCT:
         CONFIDENCE[exact-field-and-instruction-use]. Three-bit SAR2 power
         detector circuit encoding. Complete ESP32-S31 rev0 ROM uses values 4
         for initialization/enabling and 2 for TX-calibration debug mode.
+      writeConstraint: [0, 7]
