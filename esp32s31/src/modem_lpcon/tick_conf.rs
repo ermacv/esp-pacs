@@ -5,7 +5,7 @@ pub type W = crate::W<TICK_CONF_SPEC>;
 #[doc = "Field `MODEM_PWR_TICK_TARGET` reader - "]
 pub type MODEM_PWR_TICK_TARGET_R = crate::FieldReader;
 #[doc = "Field `MODEM_PWR_TICK_TARGET` writer - "]
-pub type MODEM_PWR_TICK_TARGET_W<'a, REG> = crate::FieldWriter<'a, REG, 6>;
+pub type MODEM_PWR_TICK_TARGET_W<'a, REG> = crate::FieldWriter<'a, REG, 6, u8, crate::Safe>;
 impl R {
     #[doc = "Bits 0:5"]
     #[inline(always)]

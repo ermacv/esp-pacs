@@ -5,7 +5,7 @@ pub type W = crate::W<HP_ACTIVE_ICG_MODEM_SPEC>;
 #[doc = "Field `HP_ACTIVE_DIG_ICG_MODEM_CODE` reader - need_des"]
 pub type HP_ACTIVE_DIG_ICG_MODEM_CODE_R = crate::FieldReader;
 #[doc = "Field `HP_ACTIVE_DIG_ICG_MODEM_CODE` writer - need_des"]
-pub type HP_ACTIVE_DIG_ICG_MODEM_CODE_W<'a, REG> = crate::FieldWriter<'a, REG, 2>;
+pub type HP_ACTIVE_DIG_ICG_MODEM_CODE_W<'a, REG> = crate::FieldWriter<'a, REG, 2, u8, crate::Safe>;
 impl R {
     #[doc = "Bits 30:31 - need_des"]
     #[inline(always)]

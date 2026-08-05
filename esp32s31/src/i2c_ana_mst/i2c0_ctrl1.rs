@@ -5,11 +5,11 @@ pub type W = crate::W<I2C0_CTRL1_SPEC>;
 #[doc = "Field `I2C0_SCL_PULSE_DUR` reader - "]
 pub type I2C0_SCL_PULSE_DUR_R = crate::FieldReader;
 #[doc = "Field `I2C0_SCL_PULSE_DUR` writer - "]
-pub type I2C0_SCL_PULSE_DUR_W<'a, REG> = crate::FieldWriter<'a, REG, 6>;
+pub type I2C0_SCL_PULSE_DUR_W<'a, REG> = crate::FieldWriter<'a, REG, 6, u8, crate::Safe>;
 #[doc = "Field `I2C0_SDA_SIDE_GUARD` reader - "]
 pub type I2C0_SDA_SIDE_GUARD_R = crate::FieldReader;
 #[doc = "Field `I2C0_SDA_SIDE_GUARD` writer - "]
-pub type I2C0_SDA_SIDE_GUARD_W<'a, REG> = crate::FieldWriter<'a, REG, 5>;
+pub type I2C0_SDA_SIDE_GUARD_W<'a, REG> = crate::FieldWriter<'a, REG, 5, u8, crate::Safe>;
 impl R {
     #[doc = "Bits 0:5"]
     #[inline(always)]

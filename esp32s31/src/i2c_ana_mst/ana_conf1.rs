@@ -5,11 +5,11 @@ pub type W = crate::W<ANA_CONF1_SPEC>;
 #[doc = "Field `ANA_CONF1` reader - "]
 pub type ANA_CONF1_R = crate::FieldReader<u32>;
 #[doc = "Field `ANA_CONF1` writer - "]
-pub type ANA_CONF1_W<'a, REG> = crate::FieldWriter<'a, REG, 24, u32>;
+pub type ANA_CONF1_W<'a, REG> = crate::FieldWriter<'a, REG, 24, u32, crate::Safe>;
 #[doc = "Field `ANA_STATUS1` reader - "]
 pub type ANA_STATUS1_R = crate::FieldReader;
 #[doc = "Field `ANA_STATUS1` writer - "]
-pub type ANA_STATUS1_W<'a, REG> = crate::FieldWriter<'a, REG, 8>;
+pub type ANA_STATUS1_W<'a, REG> = crate::FieldWriter<'a, REG, 8, u8, crate::Safe>;
 impl R {
     #[doc = "Bits 0:23"]
     #[inline(always)]

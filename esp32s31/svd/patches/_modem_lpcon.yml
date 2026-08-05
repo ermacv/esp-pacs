@@ -166,15 +166,19 @@ _add:
           CLK_WIFIPWR_ST_MAP:
             bitOffset: 16
             bitWidth: 4
+            writeConstraint: [0, 0xf]
           CLK_COEX_ST_MAP:
             bitOffset: 20
             bitWidth: 4
+            writeConstraint: [0, 0xf]
           CLK_I2C_MST_ST_MAP:
             bitOffset: 24
             bitWidth: 4
+            writeConstraint: [0, 0xf]
           CLK_LP_APB_ST_MAP:
             bitOffset: 28
             bitWidth: 4
+            writeConstraint: [0, 0xf]
 
       RST_CONF:
         description: RST_CONF
@@ -209,6 +213,7 @@ _add:
           MODEM_PWR_TICK_TARGET:
             bitOffset: 0
             bitWidth: 6
+            writeConstraint: [0, 0x3f]
 
       MEM_CONF:
         description: MEM_CONF

@@ -5,19 +5,19 @@ pub type W = crate::W<CLK_CONF_POWER_ST_SPEC>;
 #[doc = "Field `CLK_WIFIPWR_ST_MAP` reader - "]
 pub type CLK_WIFIPWR_ST_MAP_R = crate::FieldReader;
 #[doc = "Field `CLK_WIFIPWR_ST_MAP` writer - "]
-pub type CLK_WIFIPWR_ST_MAP_W<'a, REG> = crate::FieldWriter<'a, REG, 4>;
+pub type CLK_WIFIPWR_ST_MAP_W<'a, REG> = crate::FieldWriter<'a, REG, 4, u8, crate::Safe>;
 #[doc = "Field `CLK_COEX_ST_MAP` reader - "]
 pub type CLK_COEX_ST_MAP_R = crate::FieldReader;
 #[doc = "Field `CLK_COEX_ST_MAP` writer - "]
-pub type CLK_COEX_ST_MAP_W<'a, REG> = crate::FieldWriter<'a, REG, 4>;
+pub type CLK_COEX_ST_MAP_W<'a, REG> = crate::FieldWriter<'a, REG, 4, u8, crate::Safe>;
 #[doc = "Field `CLK_I2C_MST_ST_MAP` reader - "]
 pub type CLK_I2C_MST_ST_MAP_R = crate::FieldReader;
 #[doc = "Field `CLK_I2C_MST_ST_MAP` writer - "]
-pub type CLK_I2C_MST_ST_MAP_W<'a, REG> = crate::FieldWriter<'a, REG, 4>;
+pub type CLK_I2C_MST_ST_MAP_W<'a, REG> = crate::FieldWriter<'a, REG, 4, u8, crate::Safe>;
 #[doc = "Field `CLK_LP_APB_ST_MAP` reader - "]
 pub type CLK_LP_APB_ST_MAP_R = crate::FieldReader;
 #[doc = "Field `CLK_LP_APB_ST_MAP` writer - "]
-pub type CLK_LP_APB_ST_MAP_W<'a, REG> = crate::FieldWriter<'a, REG, 4>;
+pub type CLK_LP_APB_ST_MAP_W<'a, REG> = crate::FieldWriter<'a, REG, 4, u8, crate::Safe>;
 impl R {
     #[doc = "Bits 16:19"]
     #[inline(always)]
