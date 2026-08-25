@@ -128,6 +128,8 @@ extern "C" {
     fn WIFI_MAC_NMI();
     fn WIFI_PWR();
     fn WIFI_BB();
+    fn BT_MAC();
+    fn BT_MAC_INT1();
     fn CORDIC();
     fn ZERO_DET();
     fn LP_WDT();
@@ -440,6 +442,7 @@ pub static __EXTERNAL_INTERRUPTS: [Vector; 168] = [
     },
     Vector { _handler: WIFI_PWR },
     Vector { _handler: WIFI_BB },
+    Vector { _handler: BT_MAC },
     Vector { _reserved: 0 },
     Vector { _reserved: 0 },
     Vector { _reserved: 0 },
@@ -448,8 +451,9 @@ pub static __EXTERNAL_INTERRUPTS: [Vector; 168] = [
     Vector { _reserved: 0 },
     Vector { _reserved: 0 },
     Vector { _reserved: 0 },
-    Vector { _reserved: 0 },
-    Vector { _reserved: 0 },
+    Vector {
+        _handler: BT_MAC_INT1,
+    },
     Vector { _handler: CORDIC },
     Vector { _handler: ZERO_DET },
     Vector { _handler: LP_WDT },
