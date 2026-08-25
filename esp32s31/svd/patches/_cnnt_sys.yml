@@ -16,6 +16,12 @@ _add:
       WIFI_BB:
         description: Wi-Fi baseband interrupt
         value: 123
+      BT_MAC:
+        description: Bluetooth MAC primary interrupt
+        value: 124
+      BT_MAC_INT1:
+        description: Bluetooth MAC secondary interrupt
+        value: 133
     addressBlocks:
       - offset: 0x0
         size: 0x1000
