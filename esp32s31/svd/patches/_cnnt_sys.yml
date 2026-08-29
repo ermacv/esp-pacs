@@ -19,6 +19,9 @@ _add:
       BT_MAC:
         description: Bluetooth MAC primary interrupt
         value: 124
+      MODEM_LP_TIMER:
+        description: Bluetooth modem low-power timer interrupt
+        value: 127
       BT_MAC_INT1:
         description: Bluetooth MAC secondary interrupt
         value: 133

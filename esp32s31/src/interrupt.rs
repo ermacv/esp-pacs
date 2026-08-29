@@ -237,6 +237,8 @@ pub enum Interrupt {
     WIFI_BB = 123,
     #[doc = "124 - Bluetooth MAC primary interrupt"]
     BT_MAC = 124,
+    #[doc = "127 - Bluetooth modem low-power timer interrupt"]
+    MODEM_LP_TIMER = 127,
     #[doc = "133 - Bluetooth MAC secondary interrupt"]
     BT_MAC_INT1 = 133,
     #[doc = "134 - CORDIC"]
@@ -418,6 +420,7 @@ impl Interrupt {
             122 => Ok(Interrupt::WIFI_PWR),
             123 => Ok(Interrupt::WIFI_BB),
             124 => Ok(Interrupt::BT_MAC),
+            127 => Ok(Interrupt::MODEM_LP_TIMER),
             133 => Ok(Interrupt::BT_MAC_INT1),
             134 => Ok(Interrupt::CORDIC),
             135 => Ok(Interrupt::ZERO_DET),

@@ -115,6 +115,7 @@ PROVIDE(WIFI_MAC_NMI = DefaultHandler);
 PROVIDE(WIFI_PWR = DefaultHandler);
 PROVIDE(WIFI_BB = DefaultHandler);
 PROVIDE(BT_MAC = DefaultHandler);
+PROVIDE(MODEM_LP_TIMER = DefaultHandler);
 PROVIDE(BT_MAC_INT1 = DefaultHandler);
 PROVIDE(CORDIC = DefaultHandler);
 PROVIDE(ZERO_DET = DefaultHandler);
@@ -142,4 +143,3 @@ PROVIDE(LP_AHB_PDMA_IN_CH0 = DefaultHandler);
 PROVIDE(LP_AHB_PDMA_IN_CH1 = DefaultHandler);
 PROVIDE(LP_AHB_PDMA_OUT_CH0 = DefaultHandler);
 PROVIDE(LP_AHB_PDMA_OUT_CH1 = DefaultHandler);
-

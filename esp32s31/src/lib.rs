@@ -129,6 +129,7 @@ extern "C" {
     fn WIFI_PWR();
     fn WIFI_BB();
     fn BT_MAC();
+    fn MODEM_LP_TIMER();
     fn BT_MAC_INT1();
     fn CORDIC();
     fn ZERO_DET();
@@ -445,7 +446,9 @@ pub static __EXTERNAL_INTERRUPTS: [Vector; 168] = [
     Vector { _handler: BT_MAC },
     Vector { _reserved: 0 },
     Vector { _reserved: 0 },
-    Vector { _reserved: 0 },
+    Vector {
+        _handler: MODEM_LP_TIMER,
+    },
     Vector { _reserved: 0 },
     Vector { _reserved: 0 },
     Vector { _reserved: 0 },
