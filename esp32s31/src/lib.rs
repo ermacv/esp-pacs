@@ -123,6 +123,14 @@ extern "C" {
     fn HP_PARLIO_RX();
     fn HP_PARLIO_TX();
     fn ASSIST_DEBUG();
+    fn WIFI_MAC();
+    fn WIFI_MAC_NMI();
+    fn WIFI_PWR();
+    fn WIFI_BB();
+    fn BT_MAC();
+    fn MODEM_LP_TIMER();
+    fn IEEE802154();
+    fn BT_MAC_INT1();
     fn CORDIC();
     fn ZERO_DET();
     fn LP_WDT();
@@ -427,20 +435,28 @@ pub static __EXTERNAL_INTERRUPTS: [Vector; 168] = [
     Vector {
         _handler: ASSIST_DEBUG,
     },
+    Vector { _handler: WIFI_MAC },
+    Vector {
+        _handler: WIFI_MAC_NMI,
+    },
+    Vector { _handler: WIFI_PWR },
+    Vector { _handler: WIFI_BB },
+    Vector { _handler: BT_MAC },
+    Vector { _reserved: 0 },
+    Vector { _reserved: 0 },
+    Vector {
+        _handler: MODEM_LP_TIMER,
+    },
     Vector { _reserved: 0 },
     Vector { _reserved: 0 },
     Vector { _reserved: 0 },
     Vector { _reserved: 0 },
-    Vector { _reserved: 0 },
-    Vector { _reserved: 0 },
-    Vector { _reserved: 0 },
-    Vector { _reserved: 0 },
-    Vector { _reserved: 0 },
-    Vector { _reserved: 0 },
-    Vector { _reserved: 0 },
-    Vector { _reserved: 0 },
-    Vector { _reserved: 0 },
-    Vector { _reserved: 0 },
+    Vector {
+        _handler: IEEE802154,
+    },
+    Vector {
+        _handler: BT_MAC_INT1,
+    },
     Vector { _handler: CORDIC },
     Vector { _handler: ZERO_DET },
     Vector { _handler: LP_WDT },
