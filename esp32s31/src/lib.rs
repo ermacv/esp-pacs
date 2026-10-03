@@ -12,6 +12,7 @@ use generic::*;
 pub mod generic;
 #[cfg(feature = "rt")]
 extern "C" {
+    fn SYS_ICM();
     fn AXI_PERF_MON();
     fn USB_DEVICE();
     fn SDIO_HOST();
@@ -91,6 +92,10 @@ extern "C" {
     fn HP_MEM_APM_M3();
     fn HP_MEM_APM_M4();
     fn HP_MEM_APM_M5();
+    fn CPU_PERI0_TIMEOUT();
+    fn CPU_PERI1_TIMEOUT();
+    fn HP_PERI0_TIMEOUT();
+    fn HP_PERI1_TIMEOUT();
     fn HP_APM_M0();
     fn HP_APM_M1();
     fn HP_APM_M2();
@@ -100,6 +105,9 @@ extern "C" {
     fn HP_APM_M6();
     fn HP_PERI0_PMS();
     fn HP_PERI1_PMS();
+    fn CPU0_PERI_PMS();
+    fn CPU1_PERI_PMS();
+    fn MSPI_FLASH();
     fn LPI();
     fn PMT();
     fn SBD();
@@ -116,6 +124,7 @@ extern "C" {
     fn DMA2D_OUT_CH1();
     fn DMA2D_OUT_CH2();
     fn DMA2D_OUT_CH3();
+    fn MSPI_PSRAM();
     fn HP_SYSREG();
     fn PCNT0();
     fn PCNT1();
@@ -142,16 +151,23 @@ extern "C" {
     fn LP_WDT();
     fn LP_TIMER0();
     fn LP_TIMER1();
+    fn MB_HP();
+    fn MB_LP();
     fn PMU0();
     fn PMU1();
     fn LP_ANA();
     fn LP_ADC();
     fn LP_DAC();
     fn LP_GPIO();
+    fn LP_I2C();
+    fn LP_SPI();
     fn LP_TOUCH();
     fn LP_TSENS();
     fn LP_UART();
+    fn LP_EFUSE();
+    fn LP_SW();
     fn LP_TRNG();
+    fn LP_SYSREG();
     fn LP_APM_M0();
     fn LP_APM_M1();
     fn LP_APM_M2();
@@ -159,10 +175,12 @@ extern "C" {
     fn LP_PERI0_PMS();
     fn LP_PERI1_PMS();
     fn LP_HUK();
+    fn LP_PERI_TIMEOUT();
     fn LP_AHB_PDMA_IN_CH0();
     fn LP_AHB_PDMA_IN_CH1();
     fn LP_AHB_PDMA_OUT_CH0();
     fn LP_AHB_PDMA_OUT_CH1();
+    fn LP_SW_INVALID_SLEEP();
 }
 #[doc(hidden)]
 #[repr(C)]
@@ -174,8 +192,8 @@ pub union Vector {
 #[doc(hidden)]
 #[link_section = ".rwtext.interrupt"]
 #[no_mangle]
-pub static __EXTERNAL_INTERRUPTS: [Vector; 168] = [
-    Vector { _reserved: 0 },
+pub static __EXTERNAL_INTERRUPTS: [Vector; 169] = [
+    Vector { _handler: SYS_ICM },
     Vector {
         _handler: AXI_PERF_MON,
     },
@@ -353,10 +371,18 @@ pub static __EXTERNAL_INTERRUPTS: [Vector; 168] = [
     Vector {
         _handler: HP_MEM_APM_M5,
     },
-    Vector { _reserved: 0 },
-    Vector { _reserved: 0 },
-    Vector { _reserved: 0 },
-    Vector { _reserved: 0 },
+    Vector {
+        _handler: CPU_PERI0_TIMEOUT,
+    },
+    Vector {
+        _handler: CPU_PERI1_TIMEOUT,
+    },
+    Vector {
+        _handler: HP_PERI0_TIMEOUT,
+    },
+    Vector {
+        _handler: HP_PERI1_TIMEOUT,
+    },
     Vector {
         _handler: HP_APM_M0,
     },
@@ -384,9 +410,15 @@ pub static __EXTERNAL_INTERRUPTS: [Vector; 168] = [
     Vector {
         _handler: HP_PERI1_PMS,
     },
-    Vector { _reserved: 0 },
-    Vector { _reserved: 0 },
-    Vector { _reserved: 0 },
+    Vector {
+        _handler: CPU0_PERI_PMS,
+    },
+    Vector {
+        _handler: CPU1_PERI_PMS,
+    },
+    Vector {
+        _handler: MSPI_FLASH,
+    },
     Vector { _handler: LPI },
     Vector { _handler: PMT },
     Vector { _handler: SBD },
@@ -425,7 +457,9 @@ pub static __EXTERNAL_INTERRUPTS: [Vector; 168] = [
     Vector {
         _handler: DMA2D_OUT_CH3,
     },
-    Vector { _reserved: 0 },
+    Vector {
+        _handler: MSPI_PSRAM,
+    },
     Vector {
         _handler: HP_SYSREG,
     },
@@ -492,23 +526,25 @@ pub static __EXTERNAL_INTERRUPTS: [Vector; 168] = [
     Vector {
         _handler: LP_TIMER1,
     },
-    Vector { _reserved: 0 },
-    Vector { _reserved: 0 },
+    Vector { _handler: MB_HP },
+    Vector { _handler: MB_LP },
     Vector { _handler: PMU0 },
     Vector { _handler: PMU1 },
     Vector { _handler: LP_ANA },
     Vector { _handler: LP_ADC },
     Vector { _handler: LP_DAC },
     Vector { _handler: LP_GPIO },
-    Vector { _reserved: 0 },
-    Vector { _reserved: 0 },
+    Vector { _handler: LP_I2C },
+    Vector { _handler: LP_SPI },
     Vector { _handler: LP_TOUCH },
     Vector { _handler: LP_TSENS },
     Vector { _handler: LP_UART },
-    Vector { _reserved: 0 },
-    Vector { _reserved: 0 },
+    Vector { _handler: LP_EFUSE },
+    Vector { _handler: LP_SW },
     Vector { _handler: LP_TRNG },
-    Vector { _reserved: 0 },
+    Vector {
+        _handler: LP_SYSREG,
+    },
     Vector {
         _handler: LP_APM_M0,
     },
@@ -528,7 +564,9 @@ pub static __EXTERNAL_INTERRUPTS: [Vector; 168] = [
         _handler: LP_PERI1_PMS,
     },
     Vector { _handler: LP_HUK },
-    Vector { _reserved: 0 },
+    Vector {
+        _handler: LP_PERI_TIMEOUT,
+    },
     Vector {
         _handler: LP_AHB_PDMA_IN_CH0,
     },
@@ -540,6 +578,9 @@ pub static __EXTERNAL_INTERRUPTS: [Vector; 168] = [
     },
     Vector {
         _handler: LP_AHB_PDMA_OUT_CH1,
+    },
+    Vector {
+        _handler: LP_SW_INVALID_SLEEP,
     },
 ];
 #[doc(hidden)]
@@ -653,6 +694,15 @@ impl core::fmt::Debug for CNNT_SYS {
 }
 #[doc = "Connectivity System Registers"]
 pub mod cnnt_sys;
+#[doc = "USB UTMI PHY control"]
+pub type USB_UTMI = crate::Periph<usb_utmi::RegisterBlock, 0x2038_0000>;
+impl core::fmt::Debug for USB_UTMI {
+    fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+        f.debug_struct("USB_UTMI").finish()
+    }
+}
+#[doc = "USB UTMI PHY control"]
+pub mod usb_utmi;
 #[doc = "AXI_DMA Peripheral"]
 pub type AXI_DMA = crate::Periph<axi_dma::RegisterBlock, 0x2034_8000>;
 impl core::fmt::Debug for AXI_DMA {

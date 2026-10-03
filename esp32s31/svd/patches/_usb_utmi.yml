@@ -1,0 +1,151 @@
+# USB 2.0 high-speed UTMI PHY control. ESP-IDF: soc/usb_utmi_struct.h and
+# esp32s31.peripherals.ld (`USB_UTMI = 0x20380000`).
+_add:
+  USB_UTMI:
+    description: USB UTMI PHY control
+    groupName: USB_UTMI
+    baseAddress: 0x20380000
+    addressBlocks:
+      - offset: 0x0
+        size: 0x20
+        usage: registers
+    registers:
+      FC_00:
+        description: Clock gating and termination resistor control
+        addressOffset: 0x0
+        size: 0x20
+        resetValue: 0x80
+        access: read-write
+        fields:
+          CLK_GATE_RX:
+            description: "Clock gating for RX. 0: lower power consumption, 1: lowest power consumption, 2: normal power consumption"
+            bitOffset: 0
+            bitWidth: 2
+          CLK_GATE_TX:
+            description: "Clock gating for TX. 0: low power consumption, 1: normal power consumption"
+            bitOffset: 2
+            bitWidth: 1
+          ADJ_RES_FS:
+            description: Fine tune of the 45 ohm full-speed termination resistor (reserved)
+            bitOffset: 3
+            bitWidth: 2
+          ADJ_RES_HS:
+            description: "Fine tune of the 45 ohm high-speed termination resistor. 0: 40 ohm, 4: 45 ohm, 6: 50 ohm"
+            bitOffset: 5
+            bitWidth: 3
+      FC_01:
+        description: Squelch threshold and high-speed output swing
+        addressOffset: 0x4
+        size: 0x20
+        resetValue: 0xF2
+        access: read-write
+        fields:
+          ADJ_VREF_SQ:
+            description: "Squelch detection threshold voltage. 0: 92 mV, 2: 124 mV, 3: 152 mV"
+            bitOffset: 0
+            bitWidth: 4
+          ADJ_PW_HS:
+            description: "High-speed output swing. 1: 100 mV, 3: 200 mV, 7: 300 mV, 15: 400 mV"
+            bitOffset: 4
+            bitWidth: 4
+      FC_02:
+        description: Bias current and output eye shape
+        addressOffset: 0x8
+        size: 0x20
+        resetValue: 0x47
+        access: read-write
+        fields:
+          ADJ_IREF_RES:
+            description: "Internal bias current. 0: 125 uA, 7: 100 uA, 15: 78 uA"
+            bitOffset: 0
+            bitWidth: 4
+          ADJ_VSW_HS:
+            description: "Output eye shape. 0: 320 mV, 4: 400 mV, 7: 460 mV"
+            bitOffset: 4
+            bitWidth: 3
+      FC_03:
+        description: PLL and TX clock phase
+        addressOffset: 0xC
+        size: 0x20
+        resetValue: 0x5
+        access: read-write
+        fields:
+          ADJ_PLL:
+            description: PLL adjustment
+            bitOffset: 0
+            bitWidth: 4
+          ADJ_TXCLK_PHASE:
+            description: TX clock phase adjustment
+            bitOffset: 4
+            bitWidth: 3
+      FC_04:
+        description: Test select (output left unconnected)
+        addressOffset: 0x10
+        size: 0x20
+        resetValue: 0x0
+        access: read-write
+      FC_05:
+        description: Receive and clock selection
+        addressOffset: 0x14
+        size: 0x20
+        resetValue: 0x1
+        access: read-write
+        fields:
+          RXGAP_FIX_EN:
+            description: RX gap fix enable
+            bitOffset: 0
+            bitWidth: 1
+          COUNTER_SEL:
+            description: SIE input sample enable
+            bitOffset: 1
+            bitWidth: 1
+          CLK_SEL:
+            description: CLK60_30 source select
+            bitOffset: 2
+            bitWidth: 1
+          PHY_MODE_SEL:
+            description: PHY mode select
+            bitOffset: 3
+            bitWidth: 1
+      FC_06:
+        description: Low-speed mode and high-speed turn-around
+        addressOffset: 0x18
+        size: 0x20
+        resetValue: 0x40
+        access: read-write
+        fields:
+          LS_PAR_EN:
+            description: Low-speed mode with parallel enable
+            bitOffset: 0
+            bitWidth: 1
+          DET_FSEOP_EN:
+            description: Full-speed EOP detect enable
+            bitOffset: 1
+            bitWidth: 1
+          PRE_HPHY_LSIE:
+            description: Preamble disable enable
+            bitOffset: 2
+            bitWidth: 1
+          LS_KPALV_EN:
+            description: Low-speed mode keep-alive enable
+            bitOffset: 3
+            bitWidth: 1
+          HS_TX2RX_DLY_CNT_SEL:
+            description: High-speed bus turn-around time select
+            bitOffset: 4
+            bitWidth: 3
+      FC_07:
+        description: 3 ms counter and CLK_480 output timing
+        addressOffset: 0x1C
+        size: 0x20
+        resetValue: 0x0
+        access: read-write
+        fields:
+          CNT_NUM:
+            description: "3 ms counter select. 0: 392 us, 1: 682 us, 2: 1.36 ms, 3: 2.72 ms"
+            bitOffset: 0
+            bitWidth: 2
+          CLK480_SEL:
+            description: "CLK_480 output time. 0: valid a delay after PLL lock, 1: valid immediately after PLL lock"
+            bitOffset: 2
+            bitWidth: 1

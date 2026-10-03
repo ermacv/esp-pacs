@@ -3,6 +3,8 @@
 #[derive(Copy, Clone, Debug, PartialEq, Eq)]
 #[repr(u16)]
 pub enum Interrupt {
+    #[doc = "0 - SYS_ICM"]
+    SYS_ICM                    = 0,
     #[doc = "1 - AXI_PERF_MON"]
     AXI_PERF_MON               = 1,
     #[doc = "2 - USB_DEVICE"]
@@ -161,6 +163,14 @@ pub enum Interrupt {
     HP_MEM_APM_M4              = 78,
     #[doc = "79 - HP_MEM_APM_M5"]
     HP_MEM_APM_M5              = 79,
+    #[doc = "80 - CPU_PERI0_TIMEOUT"]
+    CPU_PERI0_TIMEOUT          = 80,
+    #[doc = "81 - CPU_PERI1_TIMEOUT"]
+    CPU_PERI1_TIMEOUT          = 81,
+    #[doc = "82 - HP_PERI0_TIMEOUT"]
+    HP_PERI0_TIMEOUT           = 82,
+    #[doc = "83 - HP_PERI1_TIMEOUT"]
+    HP_PERI1_TIMEOUT           = 83,
     #[doc = "84 - HP_APM_M0"]
     HP_APM_M0                  = 84,
     #[doc = "85 - HP_APM_M1"]
@@ -179,6 +189,12 @@ pub enum Interrupt {
     HP_PERI0_PMS               = 91,
     #[doc = "92 - HP_PERI1_PMS"]
     HP_PERI1_PMS               = 92,
+    #[doc = "93 - CPU0_PERI_PMS"]
+    CPU0_PERI_PMS              = 93,
+    #[doc = "94 - CPU1_PERI_PMS"]
+    CPU1_PERI_PMS              = 94,
+    #[doc = "95 - MSPI_FLASH"]
+    MSPI_FLASH                 = 95,
     #[doc = "96 - LPI"]
     LPI                        = 96,
     #[doc = "97 - PMT"]
@@ -211,6 +227,8 @@ pub enum Interrupt {
     DMA2D_OUT_CH2              = 110,
     #[doc = "111 - DMA2D_OUT_CH3"]
     DMA2D_OUT_CH3              = 111,
+    #[doc = "112 - MSPI_PSRAM"]
+    MSPI_PSRAM                 = 112,
     #[doc = "113 - HP_SYSREG"]
     HP_SYSREG                  = 113,
     #[doc = "114 - PCNT0"]
@@ -263,6 +281,10 @@ pub enum Interrupt {
     LP_TIMER0                  = 137,
     #[doc = "138 - LP_TIMER1"]
     LP_TIMER1                  = 138,
+    #[doc = "139 - MB_HP"]
+    MB_HP                      = 139,
+    #[doc = "140 - MB_LP"]
+    MB_LP                      = 140,
     #[doc = "141 - PMU0"]
     PMU0                       = 141,
     #[doc = "142 - PMU1"]
@@ -275,14 +297,24 @@ pub enum Interrupt {
     LP_DAC                     = 145,
     #[doc = "146 - LP_GPIO"]
     LP_GPIO                    = 146,
+    #[doc = "147 - LP_I2C"]
+    LP_I2C                     = 147,
+    #[doc = "148 - LP_SPI"]
+    LP_SPI                     = 148,
     #[doc = "149 - LP_TOUCH"]
     LP_TOUCH                   = 149,
     #[doc = "150 - LP_TSENS"]
     LP_TSENS                   = 150,
     #[doc = "151 - LP_UART"]
     LP_UART                    = 151,
+    #[doc = "152 - LP_EFUSE"]
+    LP_EFUSE                   = 152,
+    #[doc = "153 - LP_SW"]
+    LP_SW                      = 153,
     #[doc = "154 - LP_TRNG"]
     LP_TRNG                    = 154,
+    #[doc = "155 - LP_SYSREG"]
+    LP_SYSREG                  = 155,
     #[doc = "156 - LP_APM_M0"]
     LP_APM_M0                  = 156,
     #[doc = "157 - LP_APM_M1"]
@@ -297,6 +329,8 @@ pub enum Interrupt {
     LP_PERI1_PMS               = 161,
     #[doc = "162 - LP_HUK"]
     LP_HUK                     = 162,
+    #[doc = "163 - LP_PERI_TIMEOUT"]
+    LP_PERI_TIMEOUT            = 163,
     #[doc = "164 - LP_AHB_PDMA_IN_CH0"]
     LP_AHB_PDMA_IN_CH0         = 164,
     #[doc = "165 - LP_AHB_PDMA_IN_CH1"]
@@ -305,6 +339,8 @@ pub enum Interrupt {
     LP_AHB_PDMA_OUT_CH0        = 166,
     #[doc = "167 - LP_AHB_PDMA_OUT_CH1"]
     LP_AHB_PDMA_OUT_CH1        = 167,
+    #[doc = "168 - LP_SW_INVALID_SLEEP"]
+    LP_SW_INVALID_SLEEP        = 168,
 }
 #[doc = r" TryFromInterruptError"]
 #[cfg_attr(feature = "defmt", derive(defmt::Format))]
@@ -315,6 +351,7 @@ impl Interrupt {
     #[inline]
     pub fn try_from(value: u8) -> Result<Self, TryFromInterruptError> {
         match value {
+            0 => Ok(Interrupt::SYS_ICM),
             1 => Ok(Interrupt::AXI_PERF_MON),
             2 => Ok(Interrupt::USB_DEVICE),
             3 => Ok(Interrupt::SDIO_HOST),
@@ -394,6 +431,10 @@ impl Interrupt {
             77 => Ok(Interrupt::HP_MEM_APM_M3),
             78 => Ok(Interrupt::HP_MEM_APM_M4),
             79 => Ok(Interrupt::HP_MEM_APM_M5),
+            80 => Ok(Interrupt::CPU_PERI0_TIMEOUT),
+            81 => Ok(Interrupt::CPU_PERI1_TIMEOUT),
+            82 => Ok(Interrupt::HP_PERI0_TIMEOUT),
+            83 => Ok(Interrupt::HP_PERI1_TIMEOUT),
             84 => Ok(Interrupt::HP_APM_M0),
             85 => Ok(Interrupt::HP_APM_M1),
             86 => Ok(Interrupt::HP_APM_M2),
@@ -403,6 +444,9 @@ impl Interrupt {
             90 => Ok(Interrupt::HP_APM_M6),
             91 => Ok(Interrupt::HP_PERI0_PMS),
             92 => Ok(Interrupt::HP_PERI1_PMS),
+            93 => Ok(Interrupt::CPU0_PERI_PMS),
+            94 => Ok(Interrupt::CPU1_PERI_PMS),
+            95 => Ok(Interrupt::MSPI_FLASH),
             96 => Ok(Interrupt::LPI),
             97 => Ok(Interrupt::PMT),
             98 => Ok(Interrupt::SBD),
@@ -419,6 +463,7 @@ impl Interrupt {
             109 => Ok(Interrupt::DMA2D_OUT_CH1),
             110 => Ok(Interrupt::DMA2D_OUT_CH2),
             111 => Ok(Interrupt::DMA2D_OUT_CH3),
+            112 => Ok(Interrupt::MSPI_PSRAM),
             113 => Ok(Interrupt::HP_SYSREG),
             114 => Ok(Interrupt::PCNT0),
             115 => Ok(Interrupt::PCNT1),
@@ -445,16 +490,23 @@ impl Interrupt {
             136 => Ok(Interrupt::LP_WDT),
             137 => Ok(Interrupt::LP_TIMER0),
             138 => Ok(Interrupt::LP_TIMER1),
+            139 => Ok(Interrupt::MB_HP),
+            140 => Ok(Interrupt::MB_LP),
             141 => Ok(Interrupt::PMU0),
             142 => Ok(Interrupt::PMU1),
             143 => Ok(Interrupt::LP_ANA),
             144 => Ok(Interrupt::LP_ADC),
             145 => Ok(Interrupt::LP_DAC),
             146 => Ok(Interrupt::LP_GPIO),
+            147 => Ok(Interrupt::LP_I2C),
+            148 => Ok(Interrupt::LP_SPI),
             149 => Ok(Interrupt::LP_TOUCH),
             150 => Ok(Interrupt::LP_TSENS),
             151 => Ok(Interrupt::LP_UART),
+            152 => Ok(Interrupt::LP_EFUSE),
+            153 => Ok(Interrupt::LP_SW),
             154 => Ok(Interrupt::LP_TRNG),
+            155 => Ok(Interrupt::LP_SYSREG),
             156 => Ok(Interrupt::LP_APM_M0),
             157 => Ok(Interrupt::LP_APM_M1),
             158 => Ok(Interrupt::LP_APM_M2),
@@ -462,10 +514,12 @@ impl Interrupt {
             160 => Ok(Interrupt::LP_PERI0_PMS),
             161 => Ok(Interrupt::LP_PERI1_PMS),
             162 => Ok(Interrupt::LP_HUK),
+            163 => Ok(Interrupt::LP_PERI_TIMEOUT),
             164 => Ok(Interrupt::LP_AHB_PDMA_IN_CH0),
             165 => Ok(Interrupt::LP_AHB_PDMA_IN_CH1),
             166 => Ok(Interrupt::LP_AHB_PDMA_OUT_CH0),
             167 => Ok(Interrupt::LP_AHB_PDMA_OUT_CH1),
+            168 => Ok(Interrupt::LP_SW_INVALID_SLEEP),
             _ => Err(TryFromInterruptError(())),
         }
     }

@@ -2,6 +2,45 @@ _add:
   INTERRUPT_CORE0:
     description: Interrupt Controller for Core 0
     groupName: INTERRUPT_CORE0
+    # Sources ESP-IDF's soc/interrupts.h defines that no other peripheral
+    # declares.
+    interrupts:
+      SYS_ICM:
+        value: 0
+      CPU_PERI0_TIMEOUT:
+        value: 80
+      CPU_PERI1_TIMEOUT:
+        value: 81
+      HP_PERI0_TIMEOUT:
+        value: 82
+      HP_PERI1_TIMEOUT:
+        value: 83
+      CPU0_PERI_PMS:
+        value: 93
+      CPU1_PERI_PMS:
+        value: 94
+      MSPI_FLASH:
+        value: 95
+      MSPI_PSRAM:
+        value: 112
+      MB_HP:
+        value: 139
+      MB_LP:
+        value: 140
+      LP_I2C:
+        value: 147
+      LP_SPI:
+        value: 148
+      LP_EFUSE:
+        value: 152
+      LP_SW:
+        value: 153
+      LP_SYSREG:
+        value: 155
+      LP_PERI_TIMEOUT:
+        value: 163
+      LP_SW_INVALID_SLEEP:
+        value: 168
     baseAddress: 0x20585000
     addressBlocks:
       - offset: 0x0

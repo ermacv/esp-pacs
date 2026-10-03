@@ -69,5 +69,7 @@ impl crate::Readable for FUNC_IN_SEL_CFG_SPEC {}
 impl crate::Writable for FUNC_IN_SEL_CFG_SPEC {
     type Safety = crate::Unsafe;
 }
-#[doc = "`reset()` method sets FUNC%s_IN_SEL_CFG to value 0"]
-impl crate::Resettable for FUNC_IN_SEL_CFG_SPEC {}
+#[doc = "`reset()` method sets FUNC%s_IN_SEL_CFG to value 0x80"]
+impl crate::Resettable for FUNC_IN_SEL_CFG_SPEC {
+    const RESET_VALUE: u32 = 0x80;
+}
