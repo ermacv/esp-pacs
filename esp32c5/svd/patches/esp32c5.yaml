@@ -362,6 +362,11 @@ EFUSE:
     _strip: APB2OTP_
 
 GPIO:
+  _modify:
+    # ESP-IDF's gpio_struct.h reserves input signals 117-255 only: signal 116
+    # (the last one gpio_sig_map.h defines) needs a 117th register.
+    "FUNC%s_IN_SEL_CFG":
+      dim: 117
   FUNC*_IN_SEL_CFG:
     _modify:
       FUNC_IN_SEL:
@@ -581,6 +586,15 @@ LEDC:
     - ../../../common_patches/ledc_int.yaml
 
 LP_APM0:
+  _delete:
+    - M1_*
+  _modify:
+    INT_EN:
+      addressOffset: 0xD8
+    CLOCK_GATE:
+      addressOffset: 0xDC
+    DATE:
+      addressOffset: 0x7FC
   _cluster:
     M%s:
       dimIncrement: 16
@@ -598,9 +612,13 @@ LP_APM0:
         _strip: M0_
 
   FUNC_CTRL:
+    _delete:
+      - M1_FUNC_EN
     _array:
       M?_FUNC_EN: {}
   INT_EN:
+    _delete:
+      - M1_APM_INT_EN
     _array:
       M?_APM_INT_EN:
         name: M%s_APM
@@ -740,6 +758,10 @@ SYSTIMER:
     - ../../../common_patches/systimer_real_target.yaml
 
 TEE:
+  _modify:
+    # ESP-IDF tee_reg.h: TEE_CLOCK_GATE_REG is at 0xFF8, not 0x80.
+    CLOCK_GATE:
+      addressOffset: 0xFF8
   M%s_MODE_CTRL:
     _strip: M_
     MODE:
@@ -787,8 +809,12 @@ _modify:
   SPI?:
     groupName: SPI
 
+  # The base SVD places LP_APM0 at LP_APM's address (0x600B3800) with LP_APM's
+  # layout; ESP-IDF's reg_base.h and lp_apm0_reg.h put it at 0x60099800 with
+  # one master (M0) and INT_EN, CLOCK_GATE and DATE at 0xD8, 0xDC and 0x7FC.
   LP_APM0:
     groupName: LP_APM0
+    baseAddress: 0x60099800
 
   USB_DEVICE:
     groupName: USB_DEVICE
@@ -806,3 +832,10 @@ LP_AON:
   _derive:
     STORE[1-9]:
       _from: STORE0
+
+LP_TEE:
+  _modify:
+    # ESP-IDF lp_tee_reg.h: LP_TEE_CLOCK_GATE_REG is at 0xF8; 0x4 is
+    # LP_TEE_EFUSE_CTRL_REG.
+    CLOCK_GATE:
+      addressOffset: 0xF8

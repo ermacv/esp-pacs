@@ -3,8 +3,8 @@
 #[doc = "Register block"]
 pub struct RegisterBlock {
     m_mode_ctrl: [M_MODE_CTRL; 32],
+    _reserved1: [u8; 0x0f78],
     clock_gate: CLOCK_GATE,
-    _reserved2: [u8; 0x0f78],
     date: DATE,
 }
 impl RegisterBlock {
@@ -179,7 +179,7 @@ impl RegisterBlock {
     pub const fn m31_mode_ctrl(&self) -> &M_MODE_CTRL {
         self.m_mode_ctrl(31)
     }
-    #[doc = "0x80 - Clock gating register"]
+    #[doc = "0xff8 - Clock gating register"]
     #[inline(always)]
     pub const fn clock_gate(&self) -> &CLOCK_GATE {
         &self.clock_gate

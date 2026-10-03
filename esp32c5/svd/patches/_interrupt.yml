@@ -16,13 +16,28 @@ INTERRUPT_CORE0:
     - CLOCK_GATE
 
   _add:
+    # Sources ESP-IDF's soc/interrupts.h defines that no other peripheral
+    # declares.
+    _interrupts:
+      LP_PERI_TIMEOUT:
+        value: 19
+      HP_PERI_TIMEOUT:
+        value: 34
+      MODEM_PERI_TIMEOUT:
+        value: 35
+      SLC0:
+        value: 69
+      SLC1:
+        value: 70
+      KM:
+        value: 83
     CORE_0_INTR_MAP%s:
       addressOffset: 0
       dim: 84 # last register is at 0x14C
       dimIncrement: 4
       access: read-write
       size: 32
-      reset-value: 0
+      resetValue: 0
       fields:
         MAP:
           bitOffset: 0

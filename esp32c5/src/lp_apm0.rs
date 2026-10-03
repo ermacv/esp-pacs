@@ -10,10 +10,10 @@ pub struct RegisterBlock {
     region_attr: (),
     _reserved4: [u8; 0xb8],
     func_ctrl: FUNC_CTRL,
-    m: [M; 2],
+    m: [M; 1],
     int_en: INT_EN,
     clock_gate: CLOCK_GATE,
-    _reserved8: [u8; 0x0c],
+    _reserved8: [u8; 0x071c],
     date: DATE,
 }
 impl RegisterBlock {
@@ -162,28 +162,28 @@ impl RegisterBlock {
     pub const fn func_ctrl(&self) -> &FUNC_CTRL {
         &self.func_ctrl
     }
-    #[doc = "0xc8..0xe8 - Cluster M%s, containing M?_STATUS, M?_STATUS_CLR, M?_EXCEPTION_INFO0, M?_EXCEPTION_INFO1"]
+    #[doc = "0xc8..0xd8 - Cluster M%s, containing M?_STATUS, M?_STATUS_CLR, M?_EXCEPTION_INFO0, M?_EXCEPTION_INFO1"]
     #[inline(always)]
     pub const fn m(&self, n: usize) -> &M {
         &self.m[n]
     }
     #[doc = "Iterator for array of:"]
-    #[doc = "0xc8..0xe8 - Cluster M%s, containing M?_STATUS, M?_STATUS_CLR, M?_EXCEPTION_INFO0, M?_EXCEPTION_INFO1"]
+    #[doc = "0xc8..0xd8 - Cluster M%s, containing M?_STATUS, M?_STATUS_CLR, M?_EXCEPTION_INFO0, M?_EXCEPTION_INFO1"]
     #[inline(always)]
     pub fn m_iter(&self) -> impl Iterator<Item = &M> {
         self.m.iter()
     }
-    #[doc = "0xe8 - APM interrupt enable register"]
+    #[doc = "0xd8 - APM interrupt enable register"]
     #[inline(always)]
     pub const fn int_en(&self) -> &INT_EN {
         &self.int_en
     }
-    #[doc = "0xec - clock gating register"]
+    #[doc = "0xdc - clock gating register"]
     #[inline(always)]
     pub const fn clock_gate(&self) -> &CLOCK_GATE {
         &self.clock_gate
     }
-    #[doc = "0xfc - Version control register"]
+    #[doc = "0x7fc - Version control register"]
     #[inline(always)]
     pub const fn date(&self) -> &DATE {
         &self.date

@@ -3,10 +3,10 @@
 #[doc = "Register block"]
 pub struct RegisterBlock {
     m0_mode_ctrl: M0_MODE_CTRL,
-    clock_gate: CLOCK_GATE,
-    _reserved2: [u8; 0x88],
+    _reserved1: [u8; 0x8c],
     force_acc_hp: FORCE_ACC_HP,
-    _reserved3: [u8; 0x68],
+    _reserved2: [u8; 0x64],
+    clock_gate: CLOCK_GATE,
     date: DATE,
 }
 impl RegisterBlock {
@@ -15,15 +15,15 @@ impl RegisterBlock {
     pub const fn m0_mode_ctrl(&self) -> &M0_MODE_CTRL {
         &self.m0_mode_ctrl
     }
-    #[doc = "0x04 - Clock gating register"]
-    #[inline(always)]
-    pub const fn clock_gate(&self) -> &CLOCK_GATE {
-        &self.clock_gate
-    }
     #[doc = "0x90 - Force access to hpmem configuration register"]
     #[inline(always)]
     pub const fn force_acc_hp(&self) -> &FORCE_ACC_HP {
         &self.force_acc_hp
+    }
+    #[doc = "0xf8 - Clock gating register"]
+    #[inline(always)]
+    pub const fn clock_gate(&self) -> &CLOCK_GATE {
+        &self.clock_gate
     }
     #[doc = "0xfc - Version control register"]
     #[inline(always)]

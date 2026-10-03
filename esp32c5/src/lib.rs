@@ -31,6 +31,7 @@ extern "C" {
     fn LP_UART();
     fn LP_I2C();
     fn LP_WDT();
+    fn LP_PERI_TIMEOUT();
     fn LP_APM_M0();
     fn LP_APM_M1();
     fn HUK();
@@ -45,6 +46,8 @@ extern "C" {
     fn GPIO();
     fn GPIO_EXT();
     fn PAU();
+    fn HP_PERI_TIMEOUT();
+    fn MODEM_PERI_TIMEOUT();
     fn HP_APM_M0();
     fn HP_APM_M1();
     fn HP_APM_M2();
@@ -78,6 +81,8 @@ extern "C" {
     fn PCNT();
     fn PARL_IO_TX();
     fn PARL_IO_RX();
+    fn SLC0();
+    fn SLC1();
     fn DMA_IN_CH0();
     fn DMA_IN_CH1();
     fn DMA_IN_CH2();
@@ -90,6 +95,7 @@ extern "C" {
     fn RSA();
     fn ECC();
     fn ECDSA();
+    fn KM();
 }
 #[doc(hidden)]
 #[repr(C)]
@@ -101,7 +107,7 @@ pub union Vector {
 #[doc(hidden)]
 #[link_section = ".rwtext.interrupt"]
 #[no_mangle]
-pub static __EXTERNAL_INTERRUPTS: [Vector; 83] = [
+pub static __EXTERNAL_INTERRUPTS: [Vector; 84] = [
     Vector { _handler: WIFI_MAC },
     Vector {
         _handler: WIFI_MAC_NMI,
@@ -131,7 +137,9 @@ pub static __EXTERNAL_INTERRUPTS: [Vector; 83] = [
     Vector { _handler: LP_UART },
     Vector { _handler: LP_I2C },
     Vector { _handler: LP_WDT },
-    Vector { _reserved: 0 },
+    Vector {
+        _handler: LP_PERI_TIMEOUT,
+    },
     Vector {
         _handler: LP_APM_M0,
     },
@@ -162,8 +170,12 @@ pub static __EXTERNAL_INTERRUPTS: [Vector; 83] = [
     Vector { _handler: GPIO },
     Vector { _handler: GPIO_EXT },
     Vector { _handler: PAU },
-    Vector { _reserved: 0 },
-    Vector { _reserved: 0 },
+    Vector {
+        _handler: HP_PERI_TIMEOUT,
+    },
+    Vector {
+        _handler: MODEM_PERI_TIMEOUT,
+    },
     Vector {
         _handler: HP_APM_M0,
     },
@@ -235,8 +247,8 @@ pub static __EXTERNAL_INTERRUPTS: [Vector; 83] = [
     Vector {
         _handler: PARL_IO_RX,
     },
-    Vector { _reserved: 0 },
-    Vector { _reserved: 0 },
+    Vector { _handler: SLC0 },
+    Vector { _handler: SLC1 },
     Vector {
         _handler: DMA_IN_CH0,
     },
@@ -261,6 +273,7 @@ pub static __EXTERNAL_INTERRUPTS: [Vector; 83] = [
     Vector { _handler: RSA },
     Vector { _handler: ECC },
     Vector { _handler: ECDSA },
+    Vector { _handler: KM },
 ];
 #[doc(hidden)]
 pub mod interrupt;
@@ -400,42 +413,6 @@ impl core::fmt::Debug for HP_APM {
 }
 #[doc = "HP_APM Peripheral"]
 pub mod hp_apm;
-#[doc = "IEEE802154 Peripheral"]
-pub type IEEE802154 = crate::Periph<ieee802154::RegisterBlock, 0x600a_3000>;
-impl core::fmt::Debug for IEEE802154 {
-    fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
-        f.debug_struct("IEEE802154").finish()
-    }
-}
-#[doc = "IEEE802154 Peripheral"]
-pub mod ieee802154;
-#[doc = "MODEM_SYSCON"]
-pub type MODEM_SYSCON = crate::Periph<modem_syscon::RegisterBlock, 0x600a_9c00>;
-impl core::fmt::Debug for MODEM_SYSCON {
-    fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
-        f.debug_struct("MODEM_SYSCON").finish()
-    }
-}
-#[doc = "MODEM_SYSCON"]
-pub mod modem_syscon;
-#[doc = "MODEM_LPCON"]
-pub type MODEM_LPCON = crate::Periph<modem_lpcon::RegisterBlock, 0x600a_f000>;
-impl core::fmt::Debug for MODEM_LPCON {
-    fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
-        f.debug_struct("MODEM_LPCON").finish()
-    }
-}
-#[doc = "MODEM_LPCON"]
-pub mod modem_lpcon;
-#[doc = "I2C_ANA_MST Peripheral"]
-pub type I2C_ANA_MST = crate::Periph<i2c_ana_mst::RegisterBlock, 0x600a_f800>;
-impl core::fmt::Debug for I2C_ANA_MST {
-    fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
-        f.debug_struct("I2C_ANA_MST").finish()
-    }
-}
-#[doc = "I2C_ANA_MST Peripheral"]
-pub mod i2c_ana_mst;
 #[doc = "HP_SYSTEM Peripheral"]
 pub type HP_SYS = crate::Periph<hp_sys::RegisterBlock, 0x6009_5000>;
 impl core::fmt::Debug for HP_SYS {
@@ -554,7 +531,7 @@ impl core::fmt::Debug for LP_AON {
 #[doc = "LP_AON Peripheral"]
 pub mod lp_aon;
 #[doc = "LP_APM0 Peripheral"]
-pub type LP_APM0 = crate::Periph<lp_apm0::RegisterBlock, 0x600b_3800>;
+pub type LP_APM0 = crate::Periph<lp_apm0::RegisterBlock, 0x6009_9800>;
 impl core::fmt::Debug for LP_APM0 {
     fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
         f.debug_struct("LP_APM0").finish()
@@ -562,15 +539,42 @@ impl core::fmt::Debug for LP_APM0 {
 }
 #[doc = "LP_APM0 Peripheral"]
 pub mod lp_apm0;
-#[doc = "LP_APM Peripheral"]
-pub type LP_APM = crate::Periph<lp_apm::RegisterBlock, 0x600b_3800>;
-impl core::fmt::Debug for LP_APM {
+#[doc = "IEEE802154 Peripheral"]
+pub type IEEE802154 = crate::Periph<ieee802154::RegisterBlock, 0x600a_3000>;
+impl core::fmt::Debug for IEEE802154 {
     fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
-        f.debug_struct("LP_APM").finish()
+        f.debug_struct("IEEE802154").finish()
     }
 }
-#[doc = "LP_APM Peripheral"]
-pub mod lp_apm;
+#[doc = "IEEE802154 Peripheral"]
+pub mod ieee802154;
+#[doc = "MODEM_SYSCON"]
+pub type MODEM_SYSCON = crate::Periph<modem_syscon::RegisterBlock, 0x600a_9c00>;
+impl core::fmt::Debug for MODEM_SYSCON {
+    fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+        f.debug_struct("MODEM_SYSCON").finish()
+    }
+}
+#[doc = "MODEM_SYSCON"]
+pub mod modem_syscon;
+#[doc = "MODEM_LPCON"]
+pub type MODEM_LPCON = crate::Periph<modem_lpcon::RegisterBlock, 0x600a_f000>;
+impl core::fmt::Debug for MODEM_LPCON {
+    fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+        f.debug_struct("MODEM_LPCON").finish()
+    }
+}
+#[doc = "MODEM_LPCON"]
+pub mod modem_lpcon;
+#[doc = "I2C_ANA_MST Peripheral"]
+pub type I2C_ANA_MST = crate::Periph<i2c_ana_mst::RegisterBlock, 0x600a_f800>;
+impl core::fmt::Debug for I2C_ANA_MST {
+    fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+        f.debug_struct("I2C_ANA_MST").finish()
+    }
+}
+#[doc = "I2C_ANA_MST Peripheral"]
+pub mod i2c_ana_mst;
 #[doc = "LP_CLKRST Peripheral"]
 pub type LP_CLKRST = crate::Periph<lp_clkrst::RegisterBlock, 0x600b_0400>;
 impl core::fmt::Debug for LP_CLKRST {
@@ -625,6 +629,15 @@ impl core::fmt::Debug for LP_TEE {
 }
 #[doc = "Low-power Trusted Execution Environment"]
 pub mod lp_tee;
+#[doc = "LP_APM Peripheral"]
+pub type LP_APM = crate::Periph<lp_apm::RegisterBlock, 0x600b_3800>;
+impl core::fmt::Debug for LP_APM {
+    fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
+        f.debug_struct("LP_APM").finish()
+    }
+}
+#[doc = "LP_APM Peripheral"]
+pub mod lp_apm;
 #[doc = "Low-power Timer"]
 pub type LP_TIMER = crate::Periph<lp_timer::RegisterBlock, 0x600b_0c00>;
 impl core::fmt::Debug for LP_TIMER {
