@@ -2,30 +2,30 @@
 pub type R = crate::R<FIB_ENABLE_SPEC>;
 #[doc = "Register `FIB_ENABLE` writer"]
 pub type W = crate::W<FIB_ENABLE_SPEC>;
-#[doc = "Field `ANA_FIB_ENA` reader - need_des"]
-pub type ANA_FIB_ENA_R = crate::FieldReader<u32>;
-#[doc = "Field `ANA_FIB_ENA` writer - need_des"]
-pub type ANA_FIB_ENA_W<'a, REG> = crate::FieldWriter<'a, REG, 32, u32>;
+#[doc = "Field `BOD_MODE1_FIB` reader - Brownout detector mode-1 control: 1 leaves it to the analog default, 0 gives it to software (BOD_MODE1_CNTL)"]
+pub type BOD_MODE1_FIB_R = crate::BitReader;
+#[doc = "Field `BOD_MODE1_FIB` writer - Brownout detector mode-1 control: 1 leaves it to the analog default, 0 gives it to software (BOD_MODE1_CNTL)"]
+pub type BOD_MODE1_FIB_W<'a, REG> = crate::BitWriter<'a, REG>;
 impl R {
-    #[doc = "Bits 0:31 - need_des"]
+    #[doc = "Bit 1 - Brownout detector mode-1 control: 1 leaves it to the analog default, 0 gives it to software (BOD_MODE1_CNTL)"]
     #[inline(always)]
-    pub fn ana_fib_ena(&self) -> ANA_FIB_ENA_R {
-        ANA_FIB_ENA_R::new(self.bits)
+    pub fn bod_mode1_fib(&self) -> BOD_MODE1_FIB_R {
+        BOD_MODE1_FIB_R::new(((self.bits >> 1) & 1) != 0)
     }
 }
 #[cfg(feature = "impl-register-debug")]
 impl core::fmt::Debug for R {
     fn fmt(&self, f: &mut core::fmt::Formatter) -> core::fmt::Result {
         f.debug_struct("FIB_ENABLE")
-            .field("ana_fib_ena", &self.ana_fib_ena())
+            .field("bod_mode1_fib", &self.bod_mode1_fib())
             .finish()
     }
 }
 impl W {
-    #[doc = "Bits 0:31 - need_des"]
+    #[doc = "Bit 1 - Brownout detector mode-1 control: 1 leaves it to the analog default, 0 gives it to software (BOD_MODE1_CNTL)"]
     #[inline(always)]
-    pub fn ana_fib_ena(&mut self) -> ANA_FIB_ENA_W<'_, FIB_ENABLE_SPEC> {
-        ANA_FIB_ENA_W::new(self, 0)
+    pub fn bod_mode1_fib(&mut self) -> BOD_MODE1_FIB_W<'_, FIB_ENABLE_SPEC> {
+        BOD_MODE1_FIB_W::new(self, 1)
     }
 }
 #[doc = "need_des\n\nYou can [`read`](crate::Reg::read) this register and get [`fib_enable::R`](R). You can [`reset`](crate::Reg::reset), [`write`](crate::Reg::write), [`write_with_zero`](crate::Reg::write_with_zero) this register using [`fib_enable::W`](W). You can also [`modify`](crate::Reg::modify) this register. See [API](https://docs.rs/svd2rust/#read--modify--write-api)."]

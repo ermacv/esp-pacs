@@ -78,6 +78,20 @@ LP_ANA:
 
   _include: "../../../common_patches/lpana_int_strip.yaml"
 
+  # ESP-IDF 4d59230d components/esp_hal_pmu/esp32s31/include/hal/brownout_ll.h
+  # names bit 1 of FIB_ENABLE (BROWNOUT_DETECTOR_LL_FIB_ENABLE): clearing it
+  # gives the brownout detector's mode-1 control to software
+  # (brownout_ll_ana_reset_enable). The other bits keep no reviewed meaning.
+  FIB_ENABLE:
+    _delete:
+      - ANA_FIB_ENA
+    _add:
+      BOD_MODE1_FIB:
+        description: "Brownout detector mode-1 control: 1 leaves it to the analog default, 0 gives it to software (BOD_MODE1_CNTL)"
+        bitOffset: 1
+        bitWidth: 1
+        access: read-write
+
 SYSTIMER:
   _include:
     - ../../../common_patches/int_strip.yaml
