@@ -24,6 +24,13 @@ Each fix was checked against ESP-IDF `4d59230`.
 - **ESP32-S31 GPIO matrix reset values.** The GPIO patch spelled the key
   `reset-value`, which svdtools ignores, so `FUNCn_IN_SEL_CFG` and
   `FUNCn_OUT_SEL_CFG` reset to 0 instead of `0x80` and `0x100`.
+- **ESP32-S31 `LP_ANA.FIB_ENABLE`.** The register's one 32-bit field
+  `ANA_FIB_ENA` gave its bits no meaning. Bit 1, which `brownout_ll.h`
+  names `BROWNOUT_DETECTOR_LL_FIB_ENABLE`, is published as `BOD_MODE1_FIB`:
+  clearing it gives the brownout detector's mode-1 control to software, so
+  `esp-hal` configures and checks the brownout detector through typed
+  accessors instead of a mask. The other bits keep no reviewed meaning and
+  are not published.
 - **ESP32-S31 `USB_UTMI`.** The UTMI PHY control block at `0x20380000`
   (`soc/usb_utmi_struct.h`) is published, so `esp-hal` configures it through
   typed accessors instead of a raw pointer.
